@@ -15,6 +15,12 @@ le lien en question (à mettre début : https://www.enseignementsup-recherche.go
 le numéro de la vague : div[class=publication-research-article__additional]
 la petite description : div[class=section-chapo]
 
+Pour récupérer ces informations dans des listes :
+titre : liste_concours.xpath('.//a/text()').getall()
+lien : liste_concours.xpath('.//a/@href').getall()
+numéro de la vague : liste_concours.xpath('.//div[@class="publication-research-article__editing"]/div/text()').getall()
+description : liste_concours.xpath('.//div[@class="section-chapo"]/text()').getall()
+
 Aller dans chacun de ces liens et récupérer ces informations :
 date de parution : <time>
 récupérer la présentation : div[class="block-field-blocknodepublicationfield-presentation"]
