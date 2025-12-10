@@ -1,0 +1,1870 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.18.3"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "eb748c0dc1de23aeef727fd1261f6fbd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "f928a0784962f23d52dce62c98887b06",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"extraction-dinformation-sur-un-projet-de-chaque-concours\">Extraction d'information sur un projet de chaque concours</h1>\n<h1 id=\"1-6-7-10-11-12\">(1-6, 7-10, 11-12)</h1>\n<h2 id=\"auteur-julien-renoult\">Auteur : Julien RENOULT</h2>\n<h2 id=\"date-08122025\">Date : 08/12/2025</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "f1c4b36ccb401036e80da2b4aeda54a9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"importation-des-donnees-et-lecture-des-fichiers-pdf\">Importation des donn\u00e9es et lecture des fichiers PDF</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "6db22a0d6211f1904a72ae89944aeb65",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "35d9501dd7d7d683d53453d24271bae5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lEQa-0' random-id='aef1f6b6-209d-ee30-6c2f-2f4d225cb242'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;ab tasty&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;personnalisation&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;num&#92;&#92;u00e9rique&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:57,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;ab7 industries&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;terrabios&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;agriculture innovante&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:38,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;accenta&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;accenta.ai&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;&#92;&#92;u00e9nergies renouvelables, stockage et syst&#92;&#92;u00e8mes &#92;&#92;u00e9nerg&#92;&#92;u00e9tiques&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:7,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;aenitis technologies&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;ali-s&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;sant&#92;&#92;u00e9&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:80,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;airweb&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;ticket_universel&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;transport et mobilit&#92;&#92;u00e9 durable&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:24,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;alphee developpement&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;smart20&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;transport et mobilit&#92;&#92;u00e9 durable&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:25,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;alsid&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;ngcyss&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;s&#92;&#92;u00e9curit&#92;&#92;u00e9 et cybers&#92;&#92;u00e9curit&#92;&#92;u00e9&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:88,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;alyce&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;observer&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;transport et mobilit&#92;&#92;u00e9 durable&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:26,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;ap&amp;bs&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;symphonia&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;num&#92;&#92;u00e9rique&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:58,&#92;&quot;VAGUE&#92;&quot;:1},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;apix analytics&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;milan&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;french fab&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:94,&#92;&quot;VAGUE&#92;&quot;:1}]&quot;' data-total-rows='707' data-total-columns='5' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;ENTREPRISE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;PROJET&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;THEMATIQUE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;PAGE&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;VAGUE&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "f4959294f4789ab9dd0aed332f9c36e7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='PKri-0' random-id='50f638c7-48c9-82fb-7734-4548d0f02cdc'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 1&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-1-99467&#92;&quot;,&#92;&quot;Vague&#92;&quot;:1,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 89 laur&#92;&#92;u00e9ats de la premi&#92;&#92;u00e8re vague du concours d&#x27;innovation, du 12 d&#92;&#92;u00e9cembre 2017 au 13 mars 2018.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:12.2018,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le Concours d&#92;&#92;u2019innovation, dont la premi&#92;&#92;u00e8re vague a &#92;&#92;u00e9t&#92;&#92;u00e9 lanc&#92;&#92;u00e9e le 12 d&#92;&#92;u00e9cembre 2017 pour se cl&#92;&#92;u00f4turer le 13 mars 2018, vise &#92;&#92;u00e0 soutenir des projets innovants port&#92;&#92;u00e9s par des start-ups et des PME, et &#92;&#92;u00e0 favoriser l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e d&#92;&#92;u2019entreprises leaders dans leur domaine, pouvant pr&#92;&#92;u00e9tendre &#92;&#92;u00e0 une envergure mondiale. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer des projets de recherche, d&#92;&#92;u00e9veloppement et innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 600 000 euros et 5 Millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov-palmar-s-vague-1-19087.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 2&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-2-99469&#92;&quot;,&#92;&quot;Vague&#92;&quot;:2,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 65 laur&#92;&#92;u00e9ats de la deuxi&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 19 juillet 2018 au 9 octobre 2018.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:7.2019,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le Concours d&#92;&#92;u2019innovation i-Nov, dont la deuxi&#92;&#92;u00e8me vague a &#92;&#92;u00e9t&#92;&#92;u00e9 lanc&#92;&#92;u00e9e le 19 juillet 2018 pour se cl&#92;&#92;u00f4turer le 9 octobre 2018, vise &#92;&#92;u00e0 soutenir des projets innovants port&#92;&#92;u00e9s par des start-ups et des PME, et &#92;&#92;u00e0 favoriser l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e d&#92;&#92;u2019entreprises leaders dans leur domaine, pouvant pr&#92;&#92;u00e9tendre &#92;&#92;u00e0 une envergure mondiale. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, par des subventions et avances remboursables, des projets de recherche, d&#92;&#92;u00e9veloppement et innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 600 000 euros et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov---palmar-s-vague-2-19084.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 4&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-4-99471&#92;&quot;,&#92;&quot;Vague&#92;&quot;:4,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 61 laur&#92;&#92;u00e9ats de la quatri&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 04 juillet 2019 au 08 octobre 2019.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:11.202,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le Concours d&#92;&#92;u2019innovation i-Nov, dont la quatri&#92;&#92;u00e8me vague a &#92;&#92;u00e9t&#92;&#92;u00e9 lanc&#92;&#92;u00e9e le 04 juillet 2019 pour se cl&#92;&#92;u00f4turer le 08 octobre 2019, vise &#92;&#92;u00e0 soutenir des projets innovants port&#92;&#92;u00e9s par des start-ups et des PME, et &#92;&#92;u00e0 favoriser l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e d&#92;&#92;u2019entreprises leaders dans leur domaine, pouvant pr&#92;&#92;u00e9tendre &#92;&#92;u00e0 une envergure mondiale. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, par des subventions et avances remboursables, des projets de recherche, d&#92;&#92;u00e9veloppement et innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 600 000 euros et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov---palmar-s-vague-4-19078.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 3&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-3-99470&#92;&quot;,&#92;&quot;Vague&#92;&quot;:3,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 57 laur&#92;&#92;u00e9ats de la troisi&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 20 f&#92;&#92;u00e9vrier 2019 au 14 mai 2019.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:11.202,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le Concours d&#92;&#92;u2019innovation i-Nov, dont la troisi&#92;&#92;u00e8me vague a &#92;&#92;u00e9t&#92;&#92;u00e9 lanc&#92;&#92;u00e9e le 20 f&#92;&#92;u00e9vrier 2019 pour se cl&#92;&#92;u00f4turer le 14 mai 2019, vise &#92;&#92;u00e0 soutenir des projets innovants port&#92;&#92;u00e9s par des start-ups et des PME, et &#92;&#92;u00e0 favoriser l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e d&#92;&#92;u2019entreprises leaders dans leur domaine, pouvant pr&#92;&#92;u00e9tendre &#92;&#92;u00e0 une envergure mondiale. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, par des subventions et avances remboursables, des projets de recherche, d&#92;&#92;u00e9veloppement et innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 600 000 euros et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov-palmar-s-vague-3-19081.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 5&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-5-99472&#92;&quot;,&#92;&quot;Vague&#92;&quot;:5,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 80 laur&#92;&#92;u00e9ats de la cinqui&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 10 f&#92;&#92;u00e9vrier 2020 au 12 mai 2020.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:7.2021,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le Concours d&#92;&#92;u2019innovation i-Nov, dont la cinqui&#92;&#92;u00e8me vague a &#92;&#92;u00e9t&#92;&#92;u00e9 lanc&#92;&#92;u00e9e le 10 f&#92;&#92;u00e9vrier 2020 pour se cl&#92;&#92;u00f4turer le 12 mai 2020, vise &#92;&#92;u00e0 soutenir des projets innovants port&#92;&#92;u00e9s par des start-ups et des PME, et &#92;&#92;u00e0 favoriser l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e d&#92;&#92;u2019entreprises leaders dans leur domaine, pouvant pr&#92;&#92;u00e9tendre &#92;&#92;u00e0 une envergure mondiale. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, par des subventions et avances remboursables, des projets de recherche, d&#92;&#92;u00e9veloppement et innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 600 000 euros et 5 millions d&#92;&#92;u2019euros. Dans un contexte de difficult&#92;&#92;u00e9 pour de nombreuses entreprises faisant suite &#92;&#92;u00e0 la crise sanitaire mondiale li&#92;&#92;u00e9e au virus COVID19, il a &#92;&#92;u00e9t&#92;&#92;u00e9 d&#92;&#92;u00e9cid&#92;&#92;u00e9 d&#92;&#92;u2019am&#92;&#92;u00e9nager le calendrier de d&#92;&#92;u00e9p&#92;&#92;u00f4t. Les entreprises ont pu d&#92;&#92;u00e9poser un projet jusqu&#92;&#92;u2019au 1er juillet 2020 avec une instruction d&#92;&#92;u00e9cal&#92;&#92;u00e9e. Les 80 laur&#92;&#92;u00e9ats de cette cinqui&#92;&#92;u00e8me promotion sont r&#92;&#92;u00e9partis dans les th&#92;&#92;u00e9matiques suivantes&#92;&#92;u00a0:&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov---palmar-s-vague-5-19075.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 6&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-6-99475&#92;&quot;,&#92;&quot;Vague&#92;&quot;:6,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 51 laur&#92;&#92;u00e9ats de la sixi&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 29 juillet au 6 octobre 2020.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:7.2021,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le Concours d&#92;&#92;u2019innovation i-Nov, dont la sixi&#92;&#92;u00e8me vague a &#92;&#92;u00e9t&#92;&#92;u00e9 lanc&#92;&#92;u00e9e le 29 juillet 2020 pour se cl&#92;&#92;u00f4turer le 6 octobre 2020, vise &#92;&#92;u00e0 soutenir des projets innovants port&#92;&#92;u00e9s par des start-ups et des PME, et &#92;&#92;u00e0 favoriser l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e d&#92;&#92;u2019entreprises leaders dans leur domaine, pouvant pr&#92;&#92;u00e9tendre &#92;&#92;u00e0 une envergure mondiale. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, par des subventions et avances remboursables, des projets de recherche, d&#92;&#92;u00e9veloppement et innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 600 000 euros et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov---palmar-s-vague-6-19072.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 7&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-7-99483&#92;&quot;,&#92;&quot;Vague&#92;&quot;:7,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 73 laur&#92;&#92;u00e9ats de la septi&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 15 f&#92;&#92;u00e9vrier au 11 mai 2021.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:3.2022,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le concours d&#x27;innovation marque un engagement de l&#92;&#92;u2019&#92;&#92;u00c9tat via des financements, une labellisation et une communication renforc&#92;&#92;u00e9e permettant de soutenir le d&#92;&#92;u00e9veloppement d&#92;&#92;u2019entreprises fortement innovantes et technologiques, &#92;&#92;u00e9coresponsables et &#92;&#92;u0153uvrant pour une soci&#92;&#92;u00e9t&#92;&#92;u00e9 plus durable. En amont, les concours i-PhD et i-Lab visent &#92;&#92;u00e0 encourager l&#92;&#92;u2019&#92;&#92;u00e9mergence et la cr&#92;&#92;u00e9ation de startup   n&#92;&#92;u00e9es des avanc&#92;&#92;u00e9es de la recherche de pointe fran&#92;&#92;u00e7aise. En aval, le concours i-Nov permet de soutenir l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e de start-up et de PME ayant le potentiel pour devenir des leaders d&#92;&#92;u2019envergure mondiale dans leur domaine. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, par des subventions et &#92;&#92;navances remboursables, des projets de recherche, d&#92;&#92;u00e9veloppement et innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 600 000 euros et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov---palmar-s-vague-7-19066.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 8&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-8-99484&#92;&quot;,&#92;&quot;Vague&#92;&quot;:8,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 55 laur&#92;&#92;u00e9ats de la huiti&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 29 juillet au 5 octobre 2021.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:6.2022,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le concours d&#x27;innovation marque un engagement de l&#92;&#92;u2019&#92;&#92;u00c9tat via des financements, une labellisation et une communication renforc&#92;&#92;u00e9e permettant de soutenir le d&#92;&#92;u00e9veloppement d&#92;&#92;u2019entreprises fortement innovantes et technologiques, &#92;&#92;u00e9coresponsables et &#92;&#92;u0153uvrant pour une soci&#92;&#92;u00e9t&#92;&#92;u00e9 plus durable. En amont, les concours i-PhD et i-Lab visent &#92;&#92;u00e0 encourager l&#92;&#92;u2019&#92;&#92;u00e9mergence et la cr&#92;&#92;u00e9ation de startup   n&#92;&#92;u00e9es des avanc&#92;&#92;u00e9es de la recherche de pointe fran&#92;&#92;u00e7aise. En aval, le concours i-Nov permet de soutenir l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e de start-up et de PME ayant le potentiel pour devenir des leaders d&#92;&#92;u2019envergure mondiale dans leur domaine. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, des projets de recherche, de d&#92;&#92;u00e9veloppement et d&#92;&#92;u2019innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 1 million et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2022-07/i-nov---palmar-s-vague-8-19069.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 9&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-9-99486&#92;&quot;,&#92;&quot;Vague&#92;&quot;:9,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 53 laur&#92;&#92;u00e9ats de la neuvi&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 19 janvier au 22 mars 2022.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:12.2022,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le concours d&#x27;innovation marque un engagement de l&#92;&#92;u2019&#92;&#92;u00c9tat via des financements, une labellisation et une communication renforc&#92;&#92;u00e9e permettant de soutenir le d&#92;&#92;u00e9veloppement d&#92;&#92;u2019entreprises fortement innovantes et technologiques, &#92;&#92;u00e9coresponsables et &#92;&#92;u0153uvrant pour une soci&#92;&#92;u00e9t&#92;&#92;u00e9 plus durable. En amont, les concours i-PhD et i-Lab visent &#92;&#92;u00e0 encourager l&#92;&#92;u2019&#92;&#92;u00e9mergence et la cr&#92;&#92;u00e9ation de startup   n&#92;&#92;u00e9es des avanc&#92;&#92;u00e9es de la recherche de pointe fran&#92;&#92;u00e7aise. En aval, le concours i-Nov permet de soutenir l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e de start-up et de PME ayant le potentiel pour devenir des leaders d&#92;&#92;u2019envergure mondiale dans leur domaine. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, des projets de recherche, de d&#92;&#92;u00e9veloppement et d&#92;&#92;u2019innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 1 million et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2023-07/i-nov---palmar-s-vague-9-28604.pdf&#92;&quot;},{&#92;&quot;Titre&#92;&quot;:&#92;&quot;i-Nov - Palmar&#92;&#92;u00e8s de la vague 10&#92;&quot;,&#92;&quot;WEB_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/fr/i-nov-palmares-de-la-vague-10-99487&#92;&quot;,&#92;&quot;Vague&#92;&quot;:10,&#92;&quot;Description&#92;&quot;:&#92;&quot;Les 55 laur&#92;&#92;u00e9ats de la dixi&#92;&#92;u00e8me vague du concours d&#x27;innovation i-Nov, du 4 juillet au 28 septembre 2022.&#92;&quot;,&#92;&quot;Parution&#92;&quot;:7.2023,&#92;&quot;Presentation&#92;&quot;:&#92;&quot;Le concours d&#x27;innovation marque un engagement de l&#92;&#92;u2019&#92;&#92;u00c9tat via des financements, une labellisation et une communication renforc&#92;&#92;u00e9e permettant de soutenir le d&#92;&#92;u00e9veloppement d&#92;&#92;u2019entreprises fortement innovantes et technologiques, &#92;&#92;u00e9coresponsables et &#92;&#92;u0153uvrant pour une soci&#92;&#92;u00e9t&#92;&#92;u00e9 plus durable. En amont, les concours i-PhD et i-Lab visent &#92;&#92;u00e0 encourager l&#92;&#92;u2019&#92;&#92;u00e9mergence et la cr&#92;&#92;u00e9ation de startup   n&#92;&#92;u00e9es des avanc&#92;&#92;u00e9es de la recherche de pointe fran&#92;&#92;u00e7aise. En aval, le concours i-Nov permet de soutenir l&#92;&#92;u2019&#92;&#92;u00e9mergence acc&#92;&#92;u00e9l&#92;&#92;u00e9r&#92;&#92;u00e9e de start-up et de PME ayant le potentiel pour devenir des leaders d&#92;&#92;u2019envergure mondiale dans leur domaine. Il s&#92;&#92;u00e9lectionne, dans le cadre d&#92;&#92;u2019une proc&#92;&#92;u00e9dure favorisant la comp&#92;&#92;u00e9tition, des projets d&#92;&#92;u2019innovation au potentiel particuli&#92;&#92;u00e8rement fort pour l&#92;&#92;u2019&#92;&#92;u00e9conomie fran&#92;&#92;u00e7aise et permet de cofinancer, des projets de recherche, de d&#92;&#92;u00e9veloppement et d&#92;&#92;u2019innovation, dont les co&#92;&#92;u00fbts totaux se situent entre 1 million et 5 millions d&#92;&#92;u2019euros.&#92;&quot;,&#92;&quot;PDF_URL&#92;&quot;:&#92;&quot;https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2023-07/i-nov---palmar-s-vague-10-28601.pdf&#92;&quot;}]&quot;' data-total-rows='12' data-total-columns='7' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Titre&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;WEB_URL&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Vague&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;Description&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;Parution&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;Presentation&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;PDF_URL&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "4913e1511187817e00d63c14f7bdce12",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "a73011a28a150be9f09d0e7e9a15ca08",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "ENTREPRISE            ab tasty\nPROJET        personnalisation\nTHEMATIQUE           num\u00e9rique\nPAGE                        57\nVAGUE                        1\nName: 0, dtype: object\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "332fc5bd778dba9dab4fb855c6c516dc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>57</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "c7f37873aba61b512cd48dafc274fe1f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "a1690db1316d5f86c019a6cf9f2ff3c3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;57\\nLaur\u00e9ats du Concours d\u2019innovation - Vague 1 - 12 d\u00e9cembre 2017 &gt; 13 mars 2018 \\n&gt; ACTIVIT\u00c9 DE L\u2019ENTREPRISE\\n&gt; OBJECTIF DU PROJET\\nAB Tasty\\n-\\nPROJET Personnalisation\\nAdaptation temps r\u00e9el des sites aux utilisateurs \\nAB Tasty est le leader fran\u00e7ais et europ\u00e9en du march\u00e9 de l\u2019A/B Testing. \\nL\u2019A/B Testing consiste \u00e0 tester plusieurs variantes d\u2019un site internet, chaque \\nversion \u00e9tant pr\u00e9sent\u00e9e \u00e0 une partie des internautes tandis que les donn\u00e9es \\nde navigation des diff\u00e9rents panels sont analys\u00e9es pour mesurer l\u2019impact de \\nchaque version.\\nL\u2019objectif du projet est de faire progresser le march\u00e9 mondial du CRO vers la \\npremi\u00e8re solution de personnalisation web et mobile, temps r\u00e9el, totalement \\nautomatis\u00e9e. Le recours aux techniques d\u2019Intelligence Artificielle seront \\ndans ce cadre n\u00e9cessaire pour : (1) comprendre le rapport des utilisateurs \\nau contenu et (2) personnaliser leurs exp\u00e9riences en temps r\u00e9el, de mani\u00e8re \\ntotalement automatis\u00e9e, au niveau de tous les \u00e9l\u00e9ments \u00e0 disposition : \\ncontenus, images, structures des sites. \\nNUM\u00c9RIQUE\\nCONTACT\\nCamille DEVISE\\n+33 (0)1 85 09 92 67\\ncamille@abtasty.com\\nENTREPRISE\\nLOCALISATION &gt; PARIS (75)\\nR\u00c9ALISATION &gt; 2018 - 2020\\nMONTANT DU PROJET  &gt; 3 590 054 \u20ac\\n\u00c9NERGIES RENOUVELABLES, STOCKAGE ET SYST\u00c8MES \u00c9NERG\u00c9TIQUES I TRANSPORT ET MOBILIT\u00c9 DURABLE I AGRICULTURE INNOVANTE I \u00c9COSYST\u00c8MES TERRESTRES, AQUATIQUES ET MARINS I NUM\u00c9RIQUEX \\nSANT\u00c9 I S\u00c9CURIT\u00c9 ET CYBERS\u00c9CURIT\u00c9 I FRENCH FAB I ALIMENTATION INTELLIGENTE\\n\u00a9 TASTY\\nRECUEIL DES PROJETS  en ligne\\nPOUR EN SAVOIR PLUS :\\nhttps://www.bpifrance.fr/A-la-une/Appels-a-projets-concours/Appel-a-projets-Concours-d-innovation-38041\\n&gt; Retour sommaire\\n&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "702199f18a0a7daf285c8c2cbdca2ac0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain:Rect(215.43310546875, 101.14391326904297, 346.8421325683594, 141.66091918945312)\", \"text/plain:Rect(226.77169799804688, 276.27191162109375, 266.5116882324219, 288.7119140625)\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "9857a5a611235df45ae331b274814e67",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;AB Tasty\\nL\u2019A/B Test&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "21f054ec71a2ed67758ac7bf4a3b1e2a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"extraire-les-differentes-informations-dun-pdf-en-utilisant-la-methode-search_for\">Extraire les diff\u00e9rentes informations d'un PDF en utilisant la m\u00e9thode search_for()</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "94f18af683878496306016688e7b131e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "b4fade73a552c6524dd34c272b880e72",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"pour-la-localisation\">Pour la localisation</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "9d179a0c0a0b11479741ff6a5553a719",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-1-a-6\">Pour les concours 1 \u00e0 6</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "c5ce0e11fc3dddf89c8f918afd647ad5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "661c8de533be01ad10c1aaf6e95fc91a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain:Rect(49.960601806640625, 205.10894775390625, 110.42760467529297, 218.34194946289062)\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "ce9a8c5b20e2a78074573a480f090677",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;LOCALISATION &gt;&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "5479490f0d6267551e0a42d750da2b2d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "25cb4311a70f0f522d5da5546ac569d0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "a84e5f25e7f6d5de9b82ce3f64d1b8fa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(115.42760467529297, 203.10894775390625, 150.42760467529297, 220.34194946289062)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "2c7e68e31e97132f2dcc42a0a157d300",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;PARIS (75)&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "b18b130e14fd2bd23103989493788cad",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "PARIS (75)\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "e1c4bc63cf7e472b444661ca793069d6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "0f283a8095336a7decbe23cc36d9d8e2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "MONTLH\u00c9RY \n(91), CR\u00c9TEIL (94), GUADELOUPE ET\nGUYANE (97), B\u00c9ZIERS (34)\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "38a74423d6800b5eb8aa3d5c35a5fdd9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-7-a-10\">Pour les concours 7 \u00e0 10</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "66c7ad898dc57ac189944ed896b24390",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "823d59dda469023f322a019ff21f8ac1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='pHFh-0' random-id='44fa4248-6625-c7dd-97d7-fcee66fbfbef'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;&#92;&quot;:&#92;&quot;ENTREPRISE&#92;&quot;,&#92;&quot;403&#92;&quot;:&#92;&quot;nxo engineering&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;PROJET&#92;&quot;,&#92;&quot;403&#92;&quot;:&#92;&quot;volta&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;THEMATIQUE&#92;&quot;,&#92;&quot;403&#92;&quot;:&#92;&quot;eau et biodiversit&#92;&#92;u00e9&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;PAGE&#92;&quot;,&#92;&quot;403&#92;&quot;:18},{&#92;&quot;&#92;&quot;:&#92;&quot;VAGUE&#92;&quot;,&#92;&quot;403&#92;&quot;:7}]&quot;' data-total-rows='5' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;403&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "/home/renoult-julien/Documents/concours_i_nov/envConcoursETL/lib/python3.12/site-packages/marimo/_output/formatters/pandas_formatters.py:46: UserWarning: DataFrame has integer column names. This is not supported and can lead to bugs. Please use strings for column names.\n  return table(\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "37ffe985b3267dbe225da02d7e49c636",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "fc87bcd8cdb146ae99ac58c42eb1df78",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;Localisation\\nR\u00e9alisation\\nMontant du projet\\nAide accord\u00e9e\\n18\\nLaur\u00e9ats du Concours d\u2019innovation - Vague 7\\nVOLTA\\nNxo engineering\\n34\\n2021 \u2013 2024 \\n996\\xa0232\u20ac\\n448\\xa0304\u20ac\\nContact presse : C\u00e9sar Narvaez, 04 34 81 37 03 \u2013 contact@nxo-e.com\\nStation de valorisation des eaux us\u00e9es carbone n\u00e9gatif \u00e0 \u00e9nergie positive\\nNXO Engineering \u0153uvre au d\u00e9veloppement de proc\u00e9d\u00e9s innovants dans le secteur de l\u2019eau. Elle con\u00e7oit \\ndes technologies disruptives telle la biorem\u00e9diation micro-algale pour l\u2019assainissement collectif ou la \\npotabilisation en conteneur pour l\u2019aquaculture. \\nVOLTA, utopie raisonn\u00e9e, propose un changement majeur de paradigme dans le traitement des eaux \\nus\u00e9es. A l\u2019aune d\u2019enjeux environnementaux et soci\u00e9taux in\u00e9luctables, le projet VOLTA ambitionne de \\nr\u00e9pondre concomitamment \u00e0 l\u2019am\u00e9lioration continu des performances \u00e9puratoires tout en \u00e9tant partie \\nprenante de la transition \u00e9nerg\u00e9tique et environnementale. Cette nouvelle fili\u00e8re d\u2019assainissement \\ncollectif, \u00e0 carbone n\u00e9gatif et \u00e0 \u00e9nergie positive, pr\u00f4ne une valorisation compl\u00e8te de tous les produits \\nde l\u2019\u00e9puration sans augmentation des co\u00fbts d\u2019exploitation.\\nPhotobior\u00e9acteurs \\n\u00a9NXO ENGINEERING\\nTh\u00e9matique Eau et biodiversit\u00e9\\nPROJET\\n&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "86872a9f794b476aaa067d55b43bd9ca",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "141e60ffd56a4cddd84db65118a32649",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(114.1365966796875, 181.71603393554688, 164.48170471191406, 192.95703125)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "68b50e19f82f37dea59901087b33769c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "00bdde5693f39876910a638b72d47066",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;Localisation&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "b51fed129431402227dece282432e18e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "072a5010f05263eeebe7ef8d60eb5d50",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(169.48170471191406, 179.71603393554688, 204.48170471191406, 194.95703125)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "7edb008fb798cba2e0f4dd4617730e51",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;3&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rEll",
+      "code_hash": "24786e8a76bcc631c36d518a150a7062",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;34&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dGlV",
+      "code_hash": "1192c3dbf7d883b1daa9a0003253cffd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-11-a-12\">Pour les concours de 11 \u00e0 12</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SdmI",
+      "code_hash": "39162c6e48d822aa61909810ca6802c9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lgWD",
+      "code_hash": "dfaee3597448557aab423227b64a68ce",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lgWD-0' random-id='5ee9e9ef-9505-2ffc-626e-fb17c1e025ae'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;&#92;&quot;:&#92;&quot;ENTREPRISE&#92;&quot;,&#92;&quot;639&#92;&quot;:&#92;&quot;athena recherche et innovation&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;PROJET&#92;&quot;,&#92;&quot;639&#92;&quot;:&#92;&quot;i-hnov&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;THEMATIQUE&#92;&quot;,&#92;&quot;639&#92;&quot;:&#92;&quot;&#92;&#92;u00e9nergies, ressources et milieux naturels&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;PAGE&#92;&quot;,&#92;&quot;639&#92;&quot;:23},{&#92;&quot;&#92;&quot;:&#92;&quot;VAGUE&#92;&quot;,&#92;&quot;639&#92;&quot;:11}]&quot;' data-total-rows='5' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;639&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "/home/renoult-julien/Documents/concours_i_nov/envConcoursETL/lib/python3.12/site-packages/marimo/_output/formatters/pandas_formatters.py:46: UserWarning: DataFrame has integer column names. This is not supported and can lead to bugs. Please use strings for column names.\n  return table(\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "yOPj",
+      "code_hash": "677e87ab07ff2cfd448e10a40319bd8c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fwwy",
+      "code_hash": "b30515a4773eb0faa6752845e5bc0a70",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;23\\nDUR\u00c9E DU PROJET \\nCONTACT PRESSE\\nMONTANT TOTAL DU PROJET\\nMONTANT AIDE\\nACTIVIT\u00c9 DE L\u2019ENTREPRISE\\nOBJECTIFS DU PROJET\\n11\u00c8ME \u00c9DITION DU CONCOURS D\u2019INNOVATION I-NOV\\nSOCI\u00c9T\u00c9\\nI-HNOV\\nATHENA RECHERCHE ET INNOVATION\\n49 | PAYS DE LA LOIRE\\nATHENA R&amp;D&amp;I a d\u00e9velopp\u00e9 \\nun proc\u00e9d\u00e9 qui produit de \\nl\u2019hydrog\u00e8ne par fermentation \\nbact\u00e9rienne \u00e0 partir d\u2019effluents \\norganiques, \\ng\u00e9n\u00e9rant \\nune \\n\u00e9nergie d\u00e9carbon\u00e9e, locale et \\nrenouvelable. ATHENA RECHERCHE ET INNOVATION \\nd\u00e9veloppe un proc\u00e9d\u00e9 de production d\u2019hydrog\u00e8ne \\npar voie biologique \u00e0 partir des eaux us\u00e9es et des \\nd\u00e9chets organiques des industries agroalimentaires. \\nL\u2019objectif est de cr\u00e9er des \u00e9cosyst\u00e8mes hydrog\u00e8ne \\nau plus pr\u00e8s des industriels en vue de d\u00e9carboner \\nleurs activit\u00e9s et de baisser leurs consommations \\nd\u2019\u00e9nergies.\\n2023 \u2013 2026\\n2 574 462\u20ac\\n1\\xa0127\\xa0161\u20ac\\nBriand, Ludovic, 06 95 25 50 73, \\nl.briand@athena-recherche.fr\\nPartie d\u2019une feuille blanche il y a 7 ans, l\u2019\u00e9quipe \\na d\u00e9montr\u00e9 la performance et la viabilit\u00e9 du \\nproc\u00e9d\u00e9 de fermentation \u00e0 l\u2019\u00e9chelle du laboratoire \\n(de 250mL \u00e0 250L). Dans le cadre de ce projet, en \\ncollaboration avec un industriel de premier plan, \\nl\u2019entreprise va\\xa0:\\n- r\u00e9aliser le changement d\u2019\u00e9chelle du proc\u00e9d\u00e9 en \\nvue de son industrialisation rapide\\xa0;\\n- s\u00e9lectionner les briques technologiques qui \\ncompl\u00e8tent le proc\u00e9d\u00e9 HNV\\xa0;\\n- valider le mod\u00e8le \u00e9conomique.\\nFigure 1: Avec ATHENA R&amp;D&amp;I, acc\u00e9l\u00e9rons la d\u00e9carbonation \\nde l\u2019\u00e9nergie et progressons vers la neutralit\u00e9 carbone (cr\u00e9dit\\xa0: \\nAth\u00e9na Recherche et Innovation \u2013 Flaticons)\\nTH\u00c9MATIQUE ENERGIES, RESSOURCES ET MILIEUX NATURELS\\n&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LJZf",
+      "code_hash": "a9095a571c1e5913bceb674d19b32a63",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "urSm",
+      "code_hash": "579406cd173301f7d1e52230f9baeadd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(63.40599822998047, 372.4399719238281, 67.17599487304688, 383.8899841308594)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "jxvo",
+      "code_hash": "c5a85f817fd53ce0d6878ad492faae55",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mWxS",
+      "code_hash": "e630fbc54796b94d8e2737d66a124993",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;49 | PAYS DE LA LOIRE&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CcZR",
+      "code_hash": "9701733021ed9e27e6c54cc1ae9e31cc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;49 | PAYS DE LA LOIRE&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YWSi",
+      "code_hash": "3c4db04ad16e273e8dfa292a61d32c0a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"pour-le-montant-du-projet\">Pour le montant du projet</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zlud",
+      "code_hash": "c99732b51fb4c54f6369edef9c2c370b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-1-a-6\">Pour les concours de 1 \u00e0 6</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "tZnO",
+      "code_hash": "623d1b752d06465ae55b2de7211be4fc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;3 590 054 \u20ac&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xvXZ",
+      "code_hash": "9a868aa4db2b915f8abe48c8eb4a8726",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CLip",
+      "code_hash": "d80f82ee701d534d472b6114cbf45c9d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;1 821 883 \u20ac&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YECM",
+      "code_hash": "1a653241bdde7146ac8131cd0f1a6bbf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-7-a-10\">Pour les concours de 7 \u00e0 10</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "cEAS",
+      "code_hash": "814b9fda531e567214b1582f9720078c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;996 232\u20ac&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iXej",
+      "code_hash": "a61a9ea072ac9b9dd58c0c545cf8213a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-11-et-12\">Pour les concours 11 et 12</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "EJmg",
+      "code_hash": "81b0710844ff719826e474ff44b92d9f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;2 574 462\u20ac&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "UmEG",
+      "code_hash": "fd334a644eb0a82633e6a2d970a96fc2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"pour-laide-du-projet\">Pour l'aide du projet</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vEBW",
+      "code_hash": "c99732b51fb4c54f6369edef9c2c370b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-1-a-6\">Pour les concours de 1 \u00e0 6</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kLmu",
+      "code_hash": "ea7a98e56b3743707a254f0fcc5844b8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IpqN",
+      "code_hash": "ff2ec04f6758b73ba36c089f11052d64",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;771 155 \u20ac&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dxZZ",
+      "code_hash": "063026260282b58e0242399e4e9a42c2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-le-concours-de-7-a-10\">Pour le concours de 7 \u00e0 10</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dlnW",
+      "code_hash": "31933023480fe882123f916cbd1a11ba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;448 304\u20ac&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TTti",
+      "code_hash": "75352c6669c51a6f38598b546f5a5c60",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-11-et-12\">Pour les concours de 11 et 12</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RKFZ",
+      "code_hash": "b7b30a9b2948106b25dd2b42485bca7f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;1 127 161\u20ac&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IaQp",
+      "code_hash": "60fd9df3a10209444df8fd2387b635be",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"duree-du-projet\">Dur\u00e9e du projet</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IWgg",
+      "code_hash": "c99732b51fb4c54f6369edef9c2c370b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-1-a-6\">Pour les concours de 1 \u00e0 6</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fCoF",
+      "code_hash": "d9e17e37ab644cc69381094382313c84",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;2018 - 2020&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LkGn",
+      "code_hash": "1a653241bdde7146ac8131cd0f1a6bbf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-7-a-10\">Pour les concours de 7 \u00e0 10</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zVRe",
+      "code_hash": "77228cd7031a5da67f76e1369087ed3f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;2021 \u2013 2024&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "woaO",
+      "code_hash": "75352c6669c51a6f38598b546f5a5c60",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-11-et-12\">Pour les concours de 11 et 12</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "HnMC",
+      "code_hash": "ef321a825f873c465a530e2bc1ce39d2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;2023 \u2013 2026&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wadT",
+      "code_hash": "e3e8cda104746817486930fdda5914d4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"activite-de-lentreprise\">Activit\u00e9 de l'entreprise</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VCRE",
+      "code_hash": "cfcf83140e07aaa809a64df8b1b2d9b0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-1-a-6\">Pour les concours de 1 \u00e0 6</h3>\n<span class=\"paragraph\">Pour r\u00e9cup\u00e9rer l'activit\u00e9 de l'entreprise, nous allons utiliser les titres \"&gt; Activit\u00e9 de l'entrperise\" et \"&gt; Objectif du projet\" pour d\u00e9limiter le texte \u00e0 r\u00e9cup\u00e9rer.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "hgqU",
+      "code_hash": "167645342a83712314a34863ecee661a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>page 46 of Data/PDF_files/i-nov-palmar-s-vague-1-19087.pdf</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PSUk",
+      "code_hash": "ccb909ffd7f88a9bfe979108252bcd66",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mfOT",
+      "code_hash": "e8e48a1f1b144350e9749ebc75adb2b9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(215.6114044189453, 253.0063018798828, 364.107421875, 273.9183044433594)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vGiW",
+      "code_hash": "9005d14b1838bc700b717b0a7ae6a90e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SYQT",
+      "code_hash": "182b2e72d4cf6058299cf08c18bd1c1c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(215.6114044189453, 392.7182922363281, 339.4034118652344, 413.63031005859375)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bMrW",
+      "code_hash": "b722d5f3a8454b8f6c5bb32fe1df6c05",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PSQn",
+      "code_hash": "c5ed843fb44fcccc65b15113dcb1698c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;Start-up issue de la recherche publique, SOLEO ECO-SOLUTIONS d\u00e9veloppe\\ndes solutions \u00e9cologiques, \u00e0 base de substances naturelles, contre les \\nfourmis coupeuses de feuille et les termites. Ces insectes constituent les \\nprincipaux ravageurs des cultures et des exploitations foresti\u00e8res en zone \\ntropicale.\\nEn Guadeloupe et en Guyane aucune solution n\u2019est aujourd\u2019hui disponible.&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "OfTS",
+      "code_hash": "259cc546f071f3e8c1c0c13b7b2cef70",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-7-a-10\">Pour les concours de 7 \u00e0 10</h3>\n<span class=\"paragraph\">M\u00eame chose mise \u00e0 part que la d\u00e9limitation doit \u00eatre entre le titre du projet (projets) et le contact presse en prenant le premier paragraphe (le deuxi\u00e8me repr\u00e9sentant le projet). Si plus de dex paragraphes, les deux premi\u00e8res ensembles, les autres avec le projet.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lQxp",
+      "code_hash": "823d59dda469023f322a019ff21f8ac1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lQxp-0' random-id='9b854544-c93a-cc5f-4a86-2db95afa03a7'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;&#92;&quot;:&#92;&quot;ENTREPRISE&#92;&quot;,&#92;&quot;403&#92;&quot;:&#92;&quot;nxo engineering&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;PROJET&#92;&quot;,&#92;&quot;403&#92;&quot;:&#92;&quot;volta&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;THEMATIQUE&#92;&quot;,&#92;&quot;403&#92;&quot;:&#92;&quot;eau et biodiversit&#92;&#92;u00e9&#92;&quot;},{&#92;&quot;&#92;&quot;:&#92;&quot;PAGE&#92;&quot;,&#92;&quot;403&#92;&quot;:18},{&#92;&quot;&#92;&quot;:&#92;&quot;VAGUE&#92;&quot;,&#92;&quot;403&#92;&quot;:7}]&quot;' data-total-rows='5' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;403&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "/home/renoult-julien/Documents/concours_i_nov/envConcoursETL/lib/python3.12/site-packages/marimo/_output/formatters/pandas_formatters.py:46: UserWarning: DataFrame has integer column names. This is not supported and can lead to bugs. Please use strings for column names.\n  return table(\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Plbk",
+      "code_hash": "4c7c976db35692339a436a06084c573b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(90.7842025756836, 438.86260986328125, 154.03529357910156, 450.1036071777344)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rSYo",
+      "code_hash": "01dd00d6ebf78ac65d5e7ef6e966e579",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(114.1365966796875, 226.72500610351562, 174.6967010498047, 237.96600341796875)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "HuZB",
+      "code_hash": "134ffe89c2f42e3cb68a50ee5fafed47",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "WfYj",
+      "code_hash": "d263437ca90edd4c738be424489fa2b0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[\"text/plain+float:90.7842025756836\", \"text/plain+float:298.88922119140625\", \"text/plain+float:507.8371276855469\", \"text/plain+float:331.19921875\", \"NXO Engineering \\u0153uvre au d\\u00e9veloppement de proc\\u00e9d\\u00e9s innovants dans le secteur de l\\u2019eau. Elle con\\u00e7oit \\ndes technologies disruptives telle la biorem\\u00e9diation micro-algale pour l\\u2019assainissement collectif ou la \\npotabilisation en conteneur pour l\\u2019aquaculture. \\n\", 0, 0], [\"text/plain+float:90.7842025756836\", \"text/plain+float:342.0892028808594\", \"text/plain+float:507.85247802734375\", \"text/plain+float:406.7991638183594\", \"VOLTA, utopie raisonn\\u00e9e, propose un changement majeur de paradigme dans le traitement des eaux \\nus\\u00e9es. A l\\u2019aune d\\u2019enjeux environnementaux et soci\\u00e9taux in\\u00e9luctables, le projet VOLTA ambitionne de \\nr\\u00e9pondre concomitamment \\u00e0 l\\u2019am\\u00e9lioration continu des performances \\u00e9puratoires tout en \\u00e9tant partie \\nprenante de la transition \\u00e9nerg\\u00e9tique et environnementale. Cette nouvelle fili\\u00e8re d\\u2019assainissement \\ncollectif, \\u00e0 carbone n\\u00e9gatif et \\u00e0 \\u00e9nergie positive, pr\\u00f4ne une valorisation compl\\u00e8te de tous les produits \\nde l\\u2019\\u00e9puration sans augmentation des co\\u00fbts d\\u2019exploitation.\\n\", 1, 0]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Ynfw",
+      "code_hash": "fa2295d14debc40718546e99743fdcb7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;NXO Engineering \u0153uvre au d\u00e9veloppement de proc\u00e9d\u00e9s innovants dans le secteur de l\u2019eau. Elle con\u00e7oit \\ndes technologies disruptives telle la biorem\u00e9diation micro-algale pour l\u2019assainissement collectif ou la \\npotabilisation en conteneur pour l\u2019aquaculture. \\nVOLTA, utopie raisonn\u00e9e, propose un changement majeur de paradigme dans le traitement des eaux \\nus\u00e9es. A l\u2019aune d\u2019enjeux environnementaux et soci\u00e9taux in\u00e9luctables, le projet VOLTA ambitionne de \\nr\u00e9pondre concomitamment \u00e0 l\u2019am\u00e9lioration continu des performances \u00e9puratoires tout en \u00e9tant partie \\nprenante de la transition \u00e9nerg\u00e9tique et environnementale. Cette nouvelle fili\u00e8re d\u2019assainissement \\ncollectif, \u00e0 carbone n\u00e9gatif et \u00e0 \u00e9nergie positive, pr\u00f4ne une valorisation compl\u00e8te de tous les produits \\nde l\u2019\u00e9puration sans augmentation des co\u00fbts d\u2019exploitation.&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LqFA",
+      "code_hash": "f909df5dd1efd668027d10c224fb3e92",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "uDnK",
+      "code_hash": "f3555dc055f0327ce64be03f554c3918",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(91.4928970336914, 459.2740173339844, 154.74398803710938, 470.5150146484375)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aWBL",
+      "code_hash": "67fb80b3e755a9380537f03042b0c1a8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(113.93440246582031, 226.72500610351562, 174.4945068359375, 237.96600341796875)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MIsd",
+      "code_hash": "c4c5dee0fe4a3540eabfd3cdf2b8408a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IrqS",
+      "code_hash": "c056d27d2f4450138683d5b5420a03d5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[\"text/plain+float:90.7842025756836\", \"text/plain+float:299.5980224609375\", \"text/plain+float:507.86236572265625\", \"text/plain+float:342.7080078125\", \"ZE Energy est la 1\\u00e8re soci\\u00e9t\\u00e9 \\u00e0 d\\u00e9velopper en France M\\u00e9tropolitaine un nouveau mod\\u00e8le d\\u2019actif de \\nproduction \\u00e9lectrique renouvelable hybride (couplage d\\u2019une centrale de production \\u00e9lectrique \\nphotovolta\\u00efque et d\\u2019un actif de stockage) ainsi qu\\u2019un syst\\u00e8me de gestion, de pilotage et d\\u2019optimisation \\nde ces actifs hybrides en temps r\\u00e9el.\\n\", 0, 0], [\"text/plain+float:90.7842025756836\", \"text/plain+float:353.5979919433594\", \"text/plain+float:507.8433837890625\", \"text/plain+float:396.7079772949219\", \"ZE Energy a pour objectif de d\\u00e9velopper une solution qui permet d\\u2019abaisser jusqu\\u2019\\u00e0 30% la puissance \\nde raccordement des centrales de production \\u00e9lectrique hybrides (PV+ stockage) en comparaison aux \\ncentrales PV seules et de d\\u00e9placer jusqu\\u2019\\u00e0 15% de la production PV des heures m\\u00e9ridiennes d\\u2019\\u00e9t\\u00e9, ceci \\nr\\u00e9duisant le besoin de flexibilit\\u00e9 dans les r\\u00e9seaux. \\n\", 1, 0], [\"text/plain+float:90.7842025756836\", \"text/plain+float:407.59796142578125\", \"text/plain+float:507.8199768066406\", \"text/plain+float:439.907958984375\", \"L\\u2019objectif du projet est de concevoir et d\\u00e9velopper une architecture globale autour d\\u2019une plateforme IT \\npermettant de piloter et d\\u2019optimiser les actifs hybrides aux diff\\u00e9rents horizons de temps et de d\\u00e9velopper \\nla partie r\\u00e9gulation EMS permettant de r\\u00e9guler les actifs \\u00e0 l\\u2019horizon de temps 0 (temps r\\u00e9el).\\n\", 2, 0]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Lpqv",
+      "code_hash": "6c9cac1cecc48eba37d94720a63be0ac",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-11-et-12\">Pour les concours de 11 et 12</h3>\n<span class=\"paragraph\">M\u00eame chose mise \u00e0 part que c'est entre le titre 'Activit\u00e9 de l'entreprise' et la localisation '|'.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "upgv",
+      "code_hash": "1b7b48d9d55daba70ccb181fa6324b00",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(48.75600051879883, 169.1959991455078, 184.13511657714844, 180.64599609375)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "WJUG",
+      "code_hash": "c1ffb135a891e3463b9b58a001a319ac",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(63.40599822998047, 372.4399719238281, 67.17599487304688, 383.8899841308594)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pCao",
+      "code_hash": "4043c8eb720e4b848990df45a90065ed",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(302.3789978027344, 169.1959991455078, 412.3478088378906, 180.64599609375)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wEIy",
+      "code_hash": "4baa77149f1d1768eb5740f0d12bb754",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wlyU",
+      "code_hash": "b161ffe295215d7c80f7946c5b61b8d1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;ATHENA R&amp;D&amp;I a d\u00e9velopp\u00e9 \\nun proc\u00e9d\u00e9 qui produit de \\nl\u2019hydrog\u00e8ne par fermentation \\nbact\u00e9rienne \u00e0 partir d\u2019effluents \\norganiques, \\ng\u00e9n\u00e9rant \\nune \\n\u00e9nergie d\u00e9carbon\u00e9e, locale et \\nrenouvelable. ATHENA RECHERCHE ET INNOVATION \\nd\u00e9veloppe un proc\u00e9d\u00e9 de production d\u2019hydrog\u00e8ne \\npar voie biologique \u00e0 partir des eaux us\u00e9es et des \\nd\u00e9chets organiques des industries agroalimentaires. \\nL\u2019objectif est de cr\u00e9er des \u00e9cosyst\u00e8mes hydrog\u00e8ne \\nau plus pr\u00e8s des industriels en vue de d\u00e9carboner \\nleurs activit\u00e9s et de baisser leurs consommations \\nd\u2019\u00e9nergies.&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PieA",
+      "code_hash": "097efd882d03b0849f685d750d1c28b0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"objectif-du-projet\">Objectif du projet</h2>\n<span class=\"paragraph\">D\u00e9finir la limite de 80% pour les notes de bas de page. (concours 1 \u00e0 6)\nD\u00e9finir la limit de 60% (bottom). (concours 11 et 12)\nr\u00e9cup\u00e9rer le deuxi\u00e8me paragraphe entre \"Titre du projet\" et \"Contact Presse\" (concours 7 \u00e0 10)</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "GrQN",
+      "code_hash": "c99732b51fb4c54f6369edef9c2c370b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-1-a-6\">Pour les concours de 1 \u00e0 6</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Ilkb",
+      "code_hash": "182b2e72d4cf6058299cf08c18bd1c1c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(215.6114044189453, 392.7182922363281, 339.4034118652344, 413.63031005859375)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mySd",
+      "code_hash": "ff2a31c7b4c47d1447b4c125db2d32f4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(48.92319869995117, 570.4288330078125, 80.72320556640625, 582.4588012695312)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vGkK",
+      "code_hash": "d6efa0bcb6282694252e47a399a7afe3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zmIa",
+      "code_hash": "e0f51be684c5667d2db37bf64d58711c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;Le projet s\u2019appuie sur des d\u00e9couvertes innovantes \u00e9manant de laboratoires\\npublics sur une premi\u00e8re s\u00e9rie d\u2019essais terrains en Guadeloupe r\u00e9ussis (2017)\\net sur une premi\u00e8re \u00e9tape franchie \u00e0 B\u00e9ziers en mati\u00e8re d\u2019industrialisation \\ndes proc\u00e9d\u00e9s de fabrication.\\nIl consiste \u00e0 poursuivre pour 3 march\u00e9s, le d\u00e9veloppement de produits de \\nbiocontr\u00f4le contre les fourmis coupeuses de feuille et les termites, par des \\nessais terrains robustes et s\u00e9quenc\u00e9s et du d\u00e9veloppement industriel et \\nr\u00e8glementaire.\\nA mi-projet, une solution sera commercialis\u00e9e sur le march\u00e9 guadeloup\u00e9en \\nafin de d\u00e9montrer son efficacit\u00e9 en termes de hausse des rendements \\nagricoles et de pr\u00e9servation de la biodiversit\u00e9.&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NOfw",
+      "code_hash": "1a653241bdde7146ac8131cd0f1a6bbf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-de-7-a-10\">Pour les concours de 7 \u00e0 10</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "jXAc",
+      "code_hash": "015b5c70a149f866b0905dec0dab3edc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;ZE Energy a pour objectif de d\u00e9velopper une solution qui permet d\u2019abaisser jusqu\u2019\u00e0 30% la puissance \\nde raccordement des centrales de production \u00e9lectrique hybrides (PV+ stockage) en comparaison aux \\ncentrales PV seules et de d\u00e9placer jusqu\u2019\u00e0 15% de la production PV des heures m\u00e9ridiennes d\u2019\u00e9t\u00e9, ceci \\nr\u00e9duisant le besoin de flexibilit\u00e9 dans les r\u00e9seaux. \\n L\u2019objectif du projet est de concevoir et d\u00e9velopper une architecture globale autour d\u2019une plateforme IT \\npermettant de piloter et d\u2019optimiser les actifs hybrides aux diff\u00e9rents horizons de temps et de d\u00e9velopper \\nla partie r\u00e9gulation EMS permettant de r\u00e9guler les actifs \u00e0 l\u2019horizon de temps 0 (temps r\u00e9el).\\n&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mSxP",
+      "code_hash": "a61a9ea072ac9b9dd58c0c545cf8213a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"pour-les-concours-11-et-12\">Pour les concours 11 et 12</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IZEX",
+      "code_hash": "5c6367bcd8c56295760230d1137d9837",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>page 22 of Data/PDF_files/i-nov---palmar-s-vague-11-37360.pdf</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "UFLA",
+      "code_hash": "9124bda102469ff385da646a41c1598c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(302.3789978027344, 169.1959991455078, 412.3478088378906, 180.64599609375)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RCUM",
+      "code_hash": "32681e62613d8e22361a737bde5e32e1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>Rect(49.75600051879883, 599.1640014648438, 141.07479858398438, 610.614013671875)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ynmH",
+      "code_hash": "946321c3c064d56f847e7309f7e173d5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NBGo",
+      "code_hash": "88e9a8fb5be690e031620c05e980661f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;Partie d\u2019une feuille blanche il y a 7 ans, l\u2019\u00e9quipe \\na d\u00e9montr\u00e9 la performance et la viabilit\u00e9 du \\nproc\u00e9d\u00e9 de fermentation \u00e0 l\u2019\u00e9chelle du laboratoire \\n(de 250mL \u00e0 250L). Dans le cadre de ce projet, en \\ncollaboration avec un industriel de premier plan, \\nl\u2019entreprise va :\\n- r\u00e9aliser le changement d\u2019\u00e9chelle du proc\u00e9d\u00e9 en \\nvue de son industrialisation rapide ;\\n- s\u00e9lectionner les briques technologiques qui \\ncompl\u00e8tent le proc\u00e9d\u00e9 HNV ;\\n- valider le mod\u00e8le \u00e9conomique.&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "eooq",
+      "code_hash": "dd093eca3a69c246589b6ff1bc32eafb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"creation-des-fonctions-pour-recuperer-des-informations\">Cr\u00e9ation des fonctions pour r\u00e9cup\u00e9rer des informations</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ChmK",
+      "code_hash": "fa09b50c0157b9b58c6f42bc38b9c2e0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "KdvC",
+      "code_hash": "d600add76a49ede839b7b59da5713fb7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"LOCALISATION\": \"MONTLH\\u00c9RY \\n(91), CR\\u00c9TEIL (94), GUADELOUPE ET \\nGUYANE (97), B\\u00c9ZIERS (34)\", \"MONTANT_PROJET\": \" 763 317 \\u20ac\", \"MONTANT_AIDE\": \" 336 129 \\u20ac\", \"REALISATION\": \" 2018 - 2020\", \"ACTIVITE_ENTREPRISE\": \"Start-up issue de la recherche publique, SOLEO ECO-SOLUTIONS d\\u00e9veloppe\\ndes solutions \\u00e9cologiques, \\u00e0 base de substances naturelles, contre les \\nfourmis coupeuses de feuille et les termites. Ces insectes constituent les \\nprincipaux ravageurs des cultures et des exploitations foresti\\u00e8res en zone \\ntropicale.\\nEn Guadeloupe et en Guyane aucune solution n\\u2019est aujourd\\u2019hui disponible.\", \"OBJECTIF_PROJET\": \"Le projet s\\u2019appuie sur des d\\u00e9couvertes innovantes \\u00e9manant de laboratoires\\npublics sur une premi\\u00e8re s\\u00e9rie d\\u2019essais terrains en Guadeloupe r\\u00e9ussis (2017)\\net sur une premi\\u00e8re \\u00e9tape franchie \\u00e0 B\\u00e9ziers en mati\\u00e8re d\\u2019industrialisation \\ndes proc\\u00e9d\\u00e9s de fabrication.\\nIl consiste \\u00e0 poursuivre pour 3 march\\u00e9s, le d\\u00e9veloppement de produits de \\nbiocontr\\u00f4le contre les fourmis coupeuses de feuille et les termites, par des \\nessais terrains robustes et s\\u00e9quenc\\u00e9s et du d\\u00e9veloppement industriel et \\nr\\u00e8glementaire.\\nA mi-projet, une solution sera commercialis\\u00e9e sur le march\\u00e9 guadeloup\\u00e9en \\nafin de d\\u00e9montrer son efficacit\\u00e9 en termes de hausse des rendements \\nagricoles et de pr\\u00e9servation de la biodiversit\\u00e9.\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mYut",
+      "code_hash": "5042c446b1089c0464a71df8198c9c04",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "KyUb",
+      "code_hash": "1a0cc200234dc0a1c49c57e5cc5c482c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;78\\nLaur\u00e9ats du Concours d\u2019innovation i-Nov - Vague 2 - 19 juillet 2018 &gt; 9 octobre 2018 \\nPERFORMANCE ENVIRONNEMENTALE DES B\u00c2TIMENTS I INDUSTRIE, AGRICULTURE ET SYLVICULTURE \u00c9CO-EFFICIENTES I \u00c9CONOMIE CIRCULAIRE I EXPOSITIONS CHRONIQUES ET RISQUES SANITAIRES I\\nNUM\u00c9RIQUE I SANT\u00c9 I ESPACE I SOCI\u00c9T\u00c9 INCLUSIVE ET SOLIDAIRE I  ALIMENTATION INTELLIGENTE \\nLactips\\n-\\nPROJET EMBALACTIF\\nD\u00e9velopper un mat\u00e9riau fonctionnalis\u00e9 et comestible innovant\\nENTREPRISE\\nLOCALISATION\\n&gt;LOIRE (42)\\nR\u00c9ALISATION\\n&gt; 2019 - 2020\\nMONTANT DU PROJET\\n&gt; 693 000 \u20ac \\nDONT AIDE PIA\\n&gt; 312 000 \u20ac\\nALIMENTATION INTELLIGENTE\\n&gt; OBJECTIFDU PROJET\\nLe projet EMBALACTIF a pour objectif de poursuivre le d\u00e9veloppement \\nd\u2019un thermoplastique comestible par l\u2019ajout dans le mat\u00e9riau de base de \\nmol\u00e9cules actives et fonctionnelles permettant de proposer aux acteurs \\nde l\u2019industrie agroalimentaire des solutions technologiques innovantes \\n(marketing sensoriel, auxiliaire technologique, optimisation des \ufb01 li\u00e8res de \\nfabrication\u2026).\\nCONTACT\\nMarie-H\u00e9l\u00e8ne GRAMATIKOFF\\n04 81 13 04 90\\ninfo@lactips.com\\n\u00c9TAPE 1 &gt;  Janvier 2019 - F\u00e9vrier 2020\\nFonctionalisation de la formulation de base \\n(mol\u00e9cules actives)\\n\u00c9TAPE 2 &gt; Mars 2020 - D\u00e9cembre 2020\\nIndustrialisation des formulations\\n\u00a9Lactips\\nPOUR ALLER PLUS LOIN :\\nhttps://www.franceagrimer.fr/fam/Accompagner/Investissements-d-Avenir/Concours-d-innovation\\n&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VpgI",
+      "code_hash": "a5149ad2db488784168b1e093c303d76",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"LOCALISATION\": \"LOIRE (42)\", \"MONTANT_PROJET\": \" 693 000 \\u20ac\", \"MONTANT_AIDE\": \" 312 000 \\u20ac\", \"REALISATION\": \" 2019 - 2020\", \"ACTIVITE_ENTREPRISE\": null, \"OBJECTIF_PROJET\": \"Le projet EMBALACTIF a pour objectif de poursuivre le d\\u00e9veloppement \\nd\\u2019un thermoplastique comestible par l\\u2019ajout dans le mat\\u00e9riau de base de \\nmol\\u00e9cules actives et fonctionnelles permettant de proposer aux acteurs \\nde l\\u2019industrie agroalimentaire des solutions technologiques innovantes \\n(marketing sensoriel, auxiliaire technologique, optimisation des fi li\\u00e8res de \\nfabrication\\u2026).\\n\\u00c9TAPE 1 >  Janvier 2019 - F\\u00e9vrier 2020\\nFonctionalisation de la formulation de base \\n(mol\\u00e9cules actives)\\n\\u00c9TAPE 2 > Mars 2020 - D\\u00e9cembre 2020\\nIndustrialisation des formulations\\n\\u00a9Lactips\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ihkR",
+      "code_hash": "bc47c42f52f69cfd6a9d91ce9a36a008",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"LOCALISATION\": null, \"MONTANT_PROJET\": \"de 996 K\\u20ac)\", \"MONTANT_AIDE\": null, \"REALISATION\": \"Le projet se d\\u00e9roule sur 24 mois, de\", \"ACTIVITE_ENTREPRISE\": \"Le projet OPTI MILL a pour objectif de d\\u00e9velopper une plateforme analytique \\nunique permettant de mesurer en temps r\\u00e9el l\\u2019ensemble des crit\\u00e8res \\npertinents de qualit\\u00e9 des bl\\u00e9s et farines. De plus un outil d\\u2019aide \\u00e0 la d\\u00e9cision \\nsera mis en place \\u00e0 destination des meuniers afin de proposer le m\\u00e9lange \\noptimal pour assurer la qualit\\u00e9 du pain baguette chez l\\u2019industriel ou l\\u2019artisan \\nen fonction du cahier des charges. \\nLe projet est port\\u00e9 par SPECTRALYS Innovation, sp\\u00e9cialis\\u00e9e dans le \\nd\\u00e9veloppement de solutions analytiques optiques de rupture, non-\\ndestructives, sensibles et en temps r\\u00e9el. Cette technologie est bas\\u00e9e sur \\nl\\u2019utilisation innovante des signaux de fluorescence naturelle \\u00e9mis par les \\nproduits biologiques et alimentaires.\", \"OBJECTIF_PROJET\": \"Ce projet permettra \\u00e0 la fili\\u00e8re c\\u00e9r\\u00e9ali\\u00e8re de gagner en r\\u00e9silience face aux \\nal\\u00e9as climatiques en proposant une valorisation optimale des mati\\u00e8res \\npremi\\u00e8res.\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vkvV",
+      "code_hash": "5c9531f888a825cfb83e74d34e2018aa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "EKSN",
+      "code_hash": "d0ccd5f02a53412401a9499df502061e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;71\\nLaur\u00e9ats du Concours d\u2019innovation - Vague 7\\nLocalisation\\nR\u00e9alisation\\nMontant du projet\\nAide accord\u00e9e\\nQUMED\\nQubit Pharmaceuticals\\n75\\n2021 \u2013 2024 \\n3 118 226\u20ac\\n1 403 199\u20ac\\nContact presse : Marino Robert, 06 74 13 90 14 \u2013 contact@qubit-pharmaceuticals.com\\nQuantum Machine Learning pour la d\u00e9couverte de M\u00e9dicaments\\nQUDEM vise \u00e0 utiliser les derni\u00e8res avanc\u00e9es du Quantum Machine Learning pour d\u00e9velopper des \\nalgorithmes de tri bas\u00e9s sur des champs de force polarisable pour cr\u00e9er le premier workflow complet \\nd\u00e9di\u00e9 \u00e0 ces cibles hautement complexes repr\u00e9sentant la nouvelle fronti\u00e8re \u00e0 d\u00e9passer pour les pharmas. \\nTh\u00e9matique Num\u00e9rique Deep Tech\\nPROJET\\n&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "tasN",
+      "code_hash": "3bf27874b0137d805a1d8533261542b1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"LOCALISATION\": \"34\", \"MONTANT_PROJET\": \"996 232\\u20ac\", \"MONTANT_AIDE\": \"448 304\\u20ac\", \"REALISATION\": \"2021 \\u2013 2024\", \"ACTIVITE_ENTREPRISE\": \"NXO Engineering \\u0153uvre au d\\u00e9veloppement de proc\\u00e9d\\u00e9s innovants dans le secteur de l\\u2019eau. Elle con\\u00e7oit \\ndes technologies disruptives telle la biorem\\u00e9diation micro-algale pour l\\u2019assainissement collectif ou la \\npotabilisation en conteneur pour l\\u2019aquaculture. \\n\", \"OBJECTIF_PROJET\": \"VOLTA, utopie raisonn\\u00e9e, propose un changement majeur de paradigme dans le traitement des eaux \\nus\\u00e9es. A l\\u2019aune d\\u2019enjeux environnementaux et soci\\u00e9taux in\\u00e9luctables, le projet VOLTA ambitionne de \\nr\\u00e9pondre concomitamment \\u00e0 l\\u2019am\\u00e9lioration continu des performances \\u00e9puratoires tout en \\u00e9tant partie \\nprenante de la transition \\u00e9nerg\\u00e9tique et environnementale. Cette nouvelle fili\\u00e8re d\\u2019assainissement \\ncollectif, \\u00e0 carbone n\\u00e9gatif et \\u00e0 \\u00e9nergie positive, pr\\u00f4ne une valorisation compl\\u00e8te de tous les produits \\nde l\\u2019\\u00e9puration sans augmentation des co\\u00fbts d\\u2019exploitation.\\n\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SXvM",
+      "code_hash": "1b8423c882df8c7903644962769ba392",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "eYub",
+      "code_hash": "3fb8635279da0e3e7e695e6e1f33a0f4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NaYC",
+      "code_hash": "13f777093b12bf5619204c07dfe2ca14",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"LOCALISATION\": \"72 | PAYS DE LOIRE\", \"MONTANT_PROJET\": \"4 994 880\\u20ac\", \"MONTANT_AIDE\": \"1 388 532\\u20ac\", \"REALISATION\": \"2024 \\u2013 2026\", \"ACTIVITE_ENTREPRISE\": \"IRAS\\u2122 \\nest \\nle \\npremier \\nSyst\\u00e8me \\nIntelligent \\nd\\u2019Assistance \\u00e0 la conduite de \\nV\\u00e9hicules L\\u00e9gers \\u00c9lectriques \\n(VLE) \\u00e0 base d\\u2019IA, de cam\\u00e9ras intelligentes et de \\nconnectivit\\u00e9 d\\u00e9di\\u00e9 \\u00e0 la s\\u00e9curit\\u00e9 des conducteurs, \\ndes pi\\u00e9tons et des v\\u00e9hicules.\\niRider est une soci\\u00e9t\\u00e9 d\\u2019Intelligence Artificielle et de \\nlogiciel Mancelle dont la mission est de permettre \\nl\\u2019adoption en masse des V\\u00e9hicules L\\u00e9gers \\u00c9lectriques \\nen d\\u00e9veloppant un syst\\u00e8me intelligent d\\u2019assistance \\n\\u00e0 la conduite qui prot\\u00e8ge les utilisateurs des autres \\nv\\u00e9hicules, les pi\\u00e9tons des mauvais comportements \\net les v\\u00e9hicules des vandales.\", \"OBJECTIF_PROJET\": \"Le projet s\\u2019articule autour de deux des trois piliers \\nde la plateforme de s\\u00e9curit\\u00e9 IRAS\\u2122. \\nLe premier est un syst\\u00e8me embarqu\\u00e9 centralis\\u00e9 \\nd\\u00e9di\\u00e9 aux VLE, qui vise \\u00e0 d\\u00e9velopper et industrialiser \\nles couches software et applicatives ainsi que le \\nhardware qui int\\u00e8gre un acc\\u00e9l\\u00e9rateur de r\\u00e9seaux de \\nneurones, un processeur, la gestion des interfaces \\nHMI et diff\\u00e9rents modules de connectivit\\u00e9 \\ncellulaire, GPS, BT et Wifi.\\nLe deuxi\\u00e8me est une couche software de perception \\nqui comprend des mod\\u00e8les de computer vision de \\nd\\u00e9tection, classification et pr\\u00e9diction de danger, \\nd\\u00e9velopp\\u00e9s et entrain\\u00e9s avec des algorithmes de \\ndeep learning et d\\u2019IA g\\u00e9n\\u00e9rative.\\nFigure 4 \\u2013 Logo Intelligent \\nRider Assistance Systems\\nL\\u2019intelligence artificielle \\net la connectivit\\u00e9 au ser-\\nvice de la s\\u00e9curit\\u00e9 des \\nmobilit\\u00e9s l\\u00e9g\\u00e8res \\u00e9lec-\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vauy",
+      "code_hash": "7193e3e8557d0479ac42a3172d735996",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Cwew",
+      "code_hash": "14d538ddbc233dda4da5a1fe1ce58dc3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;49\\nDUR\u00c9E DU PROJET \\nCONTACT PRESSE\\nMONTANT TOTAL DU PROJET\\nMONTANT AIDE\\nACTIVIT\u00c9 DE L\u2019ENTREPRISE\\nOBJECTIFS DU PROJET\\n12\u00c8ME \u00c9DITION DU CONCOURS D\u2019INNOVATION I-NOV\\nSOCI\u00c9T\u00c9\\nMOBA\\nMOBA\\nPARIS | 75 | \u00ceLE-DE-FRANCE\\nSuivre, pr\u00e9dire et am\u00e9liorer la performance, la durabilit\u00e9 et la r\u00e9parabilit\u00e9 \\ndes batteries des v\u00e9hicules \u00e9lectriques.\\nMoba est le leader europ\u00e9en \\ndu \\ndiagnostic \\net \\nde \\nla \\ncertification \\nbatterie \\ndes \\nvoiture \u00e9lectriques. Gr\u00e2ce \u00e0 \\nune solution logicielle multi-\\nmarques et \u00e0 un bo\u00eetier de diagnostic, Moba permet \\nde certifier l\u2019\u00e9tat de sant\u00e9 (SOH) d\u2019une batterie en \\nmoins de 2 minutes, quelque soit la marque de la \\nvoiture \u00e9lectrique.\\nMoba travaille avec plus de 500 clients en Europe, \\ndont une dizaine de leaders du march\u00e9 automobile \\ncomme Stellantis , Toyota, Aramisauto ou Arval \\n(BNP Paribas), qui utilisent la solution Moba \\nCertify Pro au quotidien et sur l\u2019ensemble de \\nleur parc VE d\u2019occasion pour assurer une vente \\nrapide, efficace et totalement transparente pour \\nl\u2019acheteur. La solution Moba Certify Pro a obtenu \\nen 2023 la premi\u00e8re labellisation europ\u00e9enne pour \\nle diagnostic batterie des voitures \u00e9lectriques, \\nremise par la Car Association Remarketing Europe, \\nl\u2019association qui regroupe les principaux acteurs du \\nremarketing automobile en Europe.\\n24 mois\\n1 303 134\u20ac\\n586 410\u20ac\\nguillaume.hebert@get-moba.com\\ngilles.debuchy@get-moba.com\\nFort de son exp\u00e9rience et de son positionnement, \\nMoba souhaite \u00e0 pr\u00e9sent proposer de nouveaux \\nservices \u00e0 ses clients en capitalisant sur son \\nexpertise data et batteries. Dans cette d\u00e9marche, \\nMoba souhaite approfondir et enrichir sa base \\nde donn\u00e9es scientifique v\u00e9hicule \u00e9lectrique et \\nbatterie afin de construire de nouveaux mod\u00e8les \\nde caract\u00e9risation (indicateurs de performance, \\nde durabilit\u00e9 et de r\u00e9parabilit\u00e9 des batteries), qui \\nseront exploit\u00e9s dans des applications mobiles \\net web, accessibles directement par le client \\nprofessionnel et particulier.\\nTH\u00c9MATIQUE TRANSPORTS, MOBILIT\u00c9S, VILLES ET B\u00c2TIMENTS DURABLES \\nDUR\u00c9E DU PROJET \\nCONTACT PRESSE\\nMONTANT TOTAL DU PROJET\\nMONTANT AIDE\\n&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TBOD",
+      "code_hash": "c43367ab6ff9540424ca8c4585d7e3c1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"LOCALISATION\": \"PARIS | 75 | \\u00ceLE-DE-FRANCE\", \"MONTANT_PROJET\": \"\", \"MONTANT_AIDE\": \"DUR\\u00c9E DU PROJET\", \"REALISATION\": \"\", \"ACTIVITE_ENTREPRISE\": \"Moba est le leader europ\\u00e9en \\ndu \\ndiagnostic \\net \\nde \\nla \\ncertification \\nbatterie \\ndes \\nvoiture \\u00e9lectriques. Gr\\u00e2ce \\u00e0 \\nune solution logicielle multi-\\nmarques et \\u00e0 un bo\\u00eetier de diagnostic, Moba permet \\nde certifier l\\u2019\\u00e9tat de sant\\u00e9 (SOH) d\\u2019une batterie en \\nmoins de 2 minutes, quelque soit la marque de la \\nvoiture \\u00e9lectrique.\\nMoba travaille avec plus de 500 clients en Europe, \\ndont une dizaine de leaders du march\\u00e9 automobile \\ncomme Stellantis , Toyota, Aramisauto ou Arval \\n(BNP Paribas), qui utilisent la solution Moba \\nCertify Pro au quotidien et sur l\\u2019ensemble de \\nleur parc VE d\\u2019occasion pour assurer une vente \\nrapide, efficace et totalement transparente pour \\nl\\u2019acheteur. La solution Moba Certify Pro a obtenu \\nen 2023 la premi\\u00e8re labellisation europ\\u00e9enne pour \\nle diagnostic batterie des voitures \\u00e9lectriques, \\nremise par la Car Association Remarketing Europe, \\nl\\u2019association qui regroupe les principaux acteurs du \\nremarketing automobile en Europe.\", \"OBJECTIF_PROJET\": \"Fort de son exp\\u00e9rience et de son positionnement, \\nMoba souhaite \\u00e0 pr\\u00e9sent proposer de nouveaux \\nservices \\u00e0 ses clients en capitalisant sur son \\nexpertise data et batteries. Dans cette d\\u00e9marche, \\nMoba souhaite approfondir et enrichir sa base \\nde donn\\u00e9es scientifique v\\u00e9hicule \\u00e9lectrique et \\nbatterie afin de construire de nouveaux mod\\u00e8les \\nde caract\\u00e9risation (indicateurs de performance, \\nde durabilit\\u00e9 et de r\\u00e9parabilit\\u00e9 des batteries), qui \\nseront exploit\\u00e9s dans des applications mobiles \\net web, accessibles directement par le client \\nprofessionnel et particulier.\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DdZi",
+      "code_hash": "52103142eeafdcb69a37f0a6d02f7b8c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;1 303 134\u20ac\\nMONTANT TOTAL DU PROJET&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VnKI",
+      "code_hash": "f8d6b16e8428225418a7d1059b9d52df",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;586 410\u20ac\\nMONTANT AIDE&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "KVuy",
+      "code_hash": "4ca79ce894c14741bc25fd0110afe8cd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;CONTACT PRESSE\\n24 mois\\nDUR\u00c9E DU PROJET&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CFll",
+      "code_hash": "250ba88583dc1b654135961002b4fc44",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fJtN",
+      "code_hash": "29c032806fc102a07b5ec77e4c01dd9b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BGjf",
+      "code_hash": "3bf3ae22ff7a39673e798a667476fece",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rWYt",
+      "code_hash": "44c1f9e21c616db471661ad9ee4ac199",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='rWYt-0' random-id='b2df28e3-115e-8d15-40b5-cab82d80706b'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PARIS (75)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 3 590 054&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;AB Tasty est le leader fran&#92;&#92;u00e7ais et europ&#92;&#92;u00e9en du march&#92;&#92;u00e9 de l&#92;&#92;u2019A/B Testing. &#92;&#92;nL&#92;&#92;u2019A/B Testing consiste &#92;&#92;u00e0 tester plusieurs variantes d&#92;&#92;u2019un site internet, chaque &#92;&#92;nversion &#92;&#92;u00e9tant pr&#92;&#92;u00e9sent&#92;&#92;u00e9e &#92;&#92;u00e0 une partie des internautes tandis que les donn&#92;&#92;u00e9es &#92;&#92;nde navigation des diff&#92;&#92;u00e9rents panels sont analys&#92;&#92;u00e9es pour mesurer l&#92;&#92;u2019impact de &#92;&#92;nchaque version.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;L&#92;&#92;u2019objectif du projet est de faire progresser le march&#92;&#92;u00e9 mondial du CRO vers la &#92;&#92;npremi&#92;&#92;u00e8re solution de personnalisation web et mobile, temps r&#92;&#92;u00e9el, totalement &#92;&#92;nautomatis&#92;&#92;u00e9e. Le recours aux techniques d&#92;&#92;u2019Intelligence Artificielle seront &#92;&#92;ndans ce cadre n&#92;&#92;u00e9cessaire pour : (1) comprendre le rapport des utilisateurs &#92;&#92;nau contenu et (2) personnaliser leurs exp&#92;&#92;u00e9riences en temps r&#92;&#92;u00e9el, de mani&#92;&#92;u00e8re &#92;&#92;ntotalement automatis&#92;&#92;u00e9e, au niveau de tous les &#92;&#92;u00e9l&#92;&#92;u00e9ments &#92;&#92;u00e0 disposition : &#92;&#92;ncontenus, images, structures des sites. &#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;HAUTE-GARONNE (31)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 626 806 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 197 565 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;AB7 Industries fabrique et commercialise des produits d&#92;&#92;u2019entretien de la &#92;&#92;nmaison, du jardin et des piscines, des produits cosm&#92;&#92;u00e9tiques et r&#92;&#92;u00e9pulsifs &#92;&#92;nainsi que des produits v&#92;&#92;u00e9t&#92;&#92;u00e9rinaires. La technologie d&#92;&#92;u2019AB7 Industries repose &#92;&#92;nsur l&#92;&#92;u2019incorporation d&#92;&#92;u2019actif dans des matrices polym&#92;&#92;u00e8res pour permettre une &#92;&#92;ndiffusion contr&#92;&#92;u00f4l&#92;&#92;u00e9e de l&#92;&#92;u2019actif dans le temps.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Les objectifs du projet Terrabios portent sur la formulation innovante de &#92;&#92;nbiostimulants microbiens et sur leur proc&#92;&#92;u00e9d&#92;&#92;u00e9 de production.&#92;&#92;nAB7 Industries propose un concept innovant de formulation en associant un&#92;&#92;nsupport biod&#92;&#92;u00e9gradable fonctionnel et des microorganismes b&#92;&#92;u00e9n&#92;&#92;u00e9fiques pour&#92;&#92;nles plantes. Cette formulation permettra aux microorganismes de r&#92;&#92;u00e9sister &#92;&#92;naux conditions de stockage ainsi qu&#92;&#92;u2019aux conditions hostiles existant lors de &#92;&#92;nl&#92;&#92;u2019introduction aupr&#92;&#92;u00e8s des racines des plantes (temp&#92;&#92;u00e9ratures, pH, comp&#92;&#92;u00e9titions&#92;&#92;nface aux autres microorganismes, &#92;&#92;u2026). Le taux de survie sera nettement &#92;&#92;nam&#92;&#92;u00e9lior&#92;&#92;u00e9.&#92;&#92;nC&#92;&#92;u2019est une innovation majeure qui va permettre une meilleure efficacit&#92;&#92;u00e9 des &#92;&#92;nproduits de biostimulation et/ou de biocontr&#92;&#92;u00f4le.&#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;ESSONNE (91)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 790 331 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 355 649 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2021&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;ACCENTA d&#92;&#92;u00e9veloppe un syst&#92;&#92;u00e8me &#92;&#92;u00e9nerg&#92;&#92;u00e9tique comprenant une solution de &#92;&#92;nstockage des &#92;&#92;u00e9nergies thermiques du b&#92;&#92;u00e2timent et un syst&#92;&#92;u00e8me de pilotage &#92;&#92;nintelligent et auto-apprenant, qui permet d&#92;&#92;u2019atteindre des niveaux de &#92;&#92;nperformance in&#92;&#92;u00e9gal&#92;&#92;u00e9s tant en efficacit&#92;&#92;u00e9 &#92;&#92;u00e9nerg&#92;&#92;u00e9tique qu&#92;&#92;u2019en d&#92;&#92;u00e9carbonation, &#92;&#92;u00e0 &#92;&#92;nun co&#92;&#92;u00fbt comp&#92;&#92;u00e9titif par rapport aux &#92;&#92;u00e9nergies traditionnelles.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;ACCENTA d&#92;&#92;u00e9veloppe une solution de stockage des &#92;&#92;u00e9nergies thermiques &#92;&#92;nrenouvelables pour am&#92;&#92;u00e9liorer l&#92;&#92;u2019efficacit&#92;&#92;u00e9 &#92;&#92;u00e9nerg&#92;&#92;u00e9tique et environnementale &#92;&#92;ndes chaufferies bas carbone. Les nouvelles techniques de l&#92;&#92;u2019Intelligence &#92;&#92;nArtificielle (IA) et notamment de l&#92;&#92;u2019apprentissage automatique permettront &#92;&#92;nune am&#92;&#92;u00e9lioration significative des performances thermodynamiques.&#92;&#92;nAinsi le Projet concerne le d&#92;&#92;u00e9veloppement d&#92;&#92;u2019algorithmes d&#92;&#92;u2019IA et d&#92;&#92;u2019optimisation &#92;&#92;nqui s&#92;&#92;u2019int&#92;&#92;u00e9greront dans la suite logicielle &#92;&#92;u00e9dit&#92;&#92;u00e9e par ACCENTA qui assure la &#92;&#92;nperformance et la p&#92;&#92;u00e9rennit&#92;&#92;u00e9 des syst&#92;&#92;u00e8mes &#92;&#92;u00e9nerg&#92;&#92;u00e9tiques de chauffage et de &#92;&#92;nclimatisation des b&#92;&#92;u00e2timents bas carbone.&#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PRINCIPALE : PARIS (75) ET SEINE &#92;&#92;nET MARNE (77), SOUS-TRAITANCE ET &#92;&#92;nCOLLABORATIONS : MAINE-ET-LOIRE &#92;&#92;n(49), JURA (39), NORD (59)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 2 451 391 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2021&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Aenitis Technologies d&#92;&#92;u00e9veloppe des solutions innovantes de manipulation et &#92;&#92;nde filtration de cellules bas&#92;&#92;u00e9es sur les technologies d&#92;&#92;u2019acoustophor&#92;&#92;u00e8se.&#92;&#92;nLa Soci&#92;&#92;u00e9t&#92;&#92;u00e9 se concentre sur le d&#92;&#92;u00e9veloppement de solutions technologiques &#92;&#92;nqui vont permettre de r&#92;&#92;u00e9volutionner les pratiques actuelles des proc&#92;&#92;u00e9d&#92;&#92;u00e9s &#92;&#92;nde pr&#92;&#92;u00e9paration en th&#92;&#92;u00e9rapie cellulaire relevant d&#92;&#92;u2019enjeux de sant&#92;&#92;u00e9 publique &#92;&#92;nmajeurs.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le pancr&#92;&#92;u00e9as est un organe vital majeur dont tout dysfonctionnement &#92;&#92;nengendre de lourds traitements m&#92;&#92;u00e9dicaux. La greffe de pancr&#92;&#92;u00e9as &#92;&#92;u00e9tant &#92;&#92;nune solution aux risques de l&#92;&#92;u00e9talit&#92;&#92;u00e9 &#92;&#92;u00e9lev&#92;&#92;u00e9s (45% de rejets de greffe), des &#92;&#92;nrecherches en th&#92;&#92;u00e9rapies cellulaires ont permis des allogreffes et des &#92;&#92;nautogreffes d&#92;&#92;u2019&#92;&#92;u00eelots de Langerhans pour pallier les d&#92;&#92;u00e9r&#92;&#92;u00e8glements insulaires. &#92;&#92;nCes th&#92;&#92;u00e9rapies peu risqu&#92;&#92;u00e9es sont reconnues pour leur efficacit&#92;&#92;u00e9 et agr&#92;&#92;u00e9&#92;&#92;u00e9es &#92;&#92;ndans de nombreux pays. H&#92;&#92;u00e9las, elles souffrent de m&#92;&#92;u00e9thodes de tri et de &#92;&#92;npurification contraignantes et dont les rendements sont bas. &#92;&#92;nLe projet ALI-S r&#92;&#92;u00e9volutionne ce paradigme afin de rendre plus simples et &#92;&#92;nplus efficaces ces bioproc&#92;&#92;u00e9d&#92;&#92;u00e9s.&#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;HAUTS-DE-SEINE &#92;&#92;n(92)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 671 932 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 302 369 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2019&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;AIRWEB est un &#92;&#92;u00e9diteur de solutions logicielles &#92;&#92;u00e0 destination des &#92;&#92;nexploitants de r&#92;&#92;u00e9seaux de transports publics. Les solutions comprennent &#92;&#92;nles fonctionnalit&#92;&#92;u00e9s d&#92;&#92;u2019informations voyageur, de calcul d&#92;&#92;u2019itin&#92;&#92;u00e9raire, et de &#92;&#92;nbillettique d&#92;&#92;u00e9mat&#92;&#92;u00e9rialis&#92;&#92;u00e9e.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet vise &#92;&#92;u00e0 d&#92;&#92;u00e9velopper les briques technologiques n&#92;&#92;u00e9cessaires pour &#92;&#92;n&#92;&#92;u00e9tablir un service de Titres de transport Universel.&#92;&#92;nEn premier lieu, il s&#92;&#92;u2019agira de d&#92;&#92;u00e9velopper une solution AIRWEB (application &#92;&#92;net surtout back-office) proposant toutes les offres des r&#92;&#92;u00e9seaux partenaires, &#92;&#92;nbas&#92;&#92;u00e9e sur le socle M-TICKET_ROUTE, d&#92;&#92;u00e9velopp&#92;&#92;u00e9 avec le soutien du &#92;&#92;nProgramme des Investissements d&#92;&#92;u2019Avenir en 2016.&#92;&#92;nEn second lieu, il s&#92;&#92;u2019agira de d&#92;&#92;u00e9velopper un service de billettique d&#92;&#92;u00e9mat&#92;&#92;u00e9rialis&#92;&#92;u00e9e &#92;&#92;nuniverselle &#92;&#92;u00e0 destination de tout usager d&#92;&#92;u00e9sirant emprunter un r&#92;&#92;u00e9seau de &#92;&#92;ntransport public. Le paiement se faisant &#92;&#92;u00e0 la consommation en fonction des &#92;&#92;nr&#92;&#92;u00e9seaux emprunt&#92;&#92;u00e9s durant son trajet.&#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;SAVIGNY (69)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 750 624 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 300 348 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2019&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Cr&#92;&#92;u00e9&#92;&#92;u00e9e en 1995, ALPHEE DEVELOPPEMENT, soci&#92;&#92;u00e9t&#92;&#92;u00e9 d&#92;&#92;u2019ing&#92;&#92;u00e9nierie, se &#92;&#92;npositionne dans les domaines de l&#92;&#92;u2019&#92;&#92;u00e9lectronique de puissance et de la &#92;&#92;nconversion d&#92;&#92;u2019&#92;&#92;u00e9nergie appliqu&#92;&#92;u00e9s au transport et &#92;&#92;u00e0 l&#92;&#92;u2019industrie. Avec plus de &#92;&#92;n10 000 chargeurs en service dans les v&#92;&#92;u00e9hicules &#92;&#92;u00e9lectriques (VE), ALPHEE &#92;&#92;nest est une r&#92;&#92;u00e9f&#92;&#92;u00e9rence dans la conception et la fourniture d&#92;&#92;u2019alimentations et &#92;&#92;nde chargeurs embarqu&#92;&#92;u00e9s dans le monde de l&#92;&#92;u2019&#92;&#92;u00e9lectromobilit&#92;&#92;u00e9.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Fort de son exp&#92;&#92;u00e9rience, de son savoir-faire &#92;&#92;u00e9lectronique et technologique, &#92;&#92;net de la tendance lourde de l&#92;&#92;u2019&#92;&#92;u00e9lectrification des v&#92;&#92;u00e9hicules urbains, ALPHEE &#92;&#92;nDEVELOPPEMENT souhaite d&#92;&#92;u00e9velopper et commercialiser la brique de &#92;&#92;npuissance SMART20 qui sera unique et comp&#92;&#92;u00e9titive sur le march&#92;&#92;u00e9 du VE en &#92;&#92;nFrance et en Europe. Ce module de forte puissance 20kW pourra adresser une &#92;&#92;nmultitude d&#92;&#92;u2019applications de chargeurs de batterie embarqu&#92;&#92;u00e9s (auto, utilitaires, &#92;&#92;npoids lourd, bus, v&#92;&#92;u00e9hicules sp&#92;&#92;u00e9ciaux de puissance 7kW monophas&#92;&#92;u00e9/20kW &#92;&#92;ntriphas&#92;&#92;u00e9) et stationnaires (stations de charges DC optimis&#92;&#92;u00e9es de puissance &#92;&#92;n20/40/60/80/100kW) sur une large plage de tension batterie (85V &#92;&#92;u00e0 850V) &#92;&#92;ncouvrant quasiment 100% des solutions batteries des VE actuels et &#92;&#92;u00e0 venir.&#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PARIS (75)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 1 049 693 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;La soci&#92;&#92;u00e9t&#92;&#92;u00e9 ALSID d&#92;&#92;u00e9veloppe une solution novatrice totalement diff&#92;&#92;u00e9renciante &#92;&#92;nsur le march&#92;&#92;u00e9 de l&#92;&#92;u2019Active Directory visant &#92;&#92;u00e0 prot&#92;&#92;u00e9ger les architectures &#92;&#92;nd&#92;&#92;u2019annuaire.&#92;&#92;nLa solution s&#92;&#92;u2019adresse &#92;&#92;u00e0 une population de d&#92;&#92;u00e9cideurs : la complexit&#92;&#92;u00e9 technique &#92;&#92;ndes syst&#92;&#92;u00e8mes sous-jacents est abstraite et synth&#92;&#92;u00e9tis&#92;&#92;u00e9e sous forme de &#92;&#92;ntableaux de bord et de scores clairs.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet DSC port&#92;&#92;u00e9 par la soci&#92;&#92;u00e9t&#92;&#92;u00e9 ALSID vise &#92;&#92;u00e0 accompagner les entreprises &#92;&#92;n&#92;&#92;u00e0 prot&#92;&#92;u00e9ger les architectures d&#92;&#92;u2019annuaire, domaine encore peu mature en &#92;&#92;ntermes de connaissance et d&#92;&#92;u2019outillage, et largement pr&#92;&#92;u00e9empt&#92;&#92;u00e9 &#92;&#92;u00e0 ce jour par &#92;&#92;nMicrosoft. &#92;&#92;nLes architectures Active Directory, bien que d&#92;&#92;u00e9ploy&#92;&#92;u00e9es &#92;&#92;u00e0 grande &#92;&#92;u00e9chelle dans &#92;&#92;nla majorit&#92;&#92;u00e9 des entreprises, sont tr&#92;&#92;u00e8s peu connues, car mettent en jeu des &#92;&#92;nprocessus d&#92;&#92;u2019ing&#92;&#92;u00e9nierie complexes. &#92;&#92;nL&#92;&#92;u2019approche fondamentale d&#92;&#92;u2019ALSID est de mettre &#92;&#92;u00e0 disposition des &#92;&#92;nresponsables des technologies tr&#92;&#92;u00e8s pointues de s&#92;&#92;u00e9curit&#92;&#92;u00e9, d&#92;&#92;u2019utilisation rendue &#92;&#92;ntriviale, afin de permettre une diffusion g&#92;&#92;u00e9n&#92;&#92;u00e9ralis&#92;&#92;u00e9e de la protection proactive &#92;&#92;ndes infrastructures Active Directory. &#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;RH&#92;&#92;u00d4NE-ALPES (69), &#92;&#92;nHAUT-DE -SEINE (92)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 798 360 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 336 852 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2019&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Fond&#92;&#92;u00e9e &#92;&#92;u00e0 Lyon en janvier 2000, ALYCE, sp&#92;&#92;u00e9cialiste du recueil de donn&#92;&#92;u00e9es &#92;&#92;nrouti&#92;&#92;u00e8res, r&#92;&#92;u00e9alise plus de 500 missions par an, en particulier des comptages, &#92;&#92;ndes mesures, et des enqu&#92;&#92;u00eates Origine Destination de tout type. Ces donn&#92;&#92;u00e9es &#92;&#92;nservent de base de travail &#92;&#92;u00e0 la r&#92;&#92;u00e9alisation d&#92;&#92;u2019&#92;&#92;u00e9tudes, principalement dans &#92;&#92;nles domaines de la circulation, des transports et de l&#92;&#92;u2019am&#92;&#92;u00e9nagement des &#92;&#92;ninfrastructures.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;ALYCE entend concevoir et mettre sur le march&#92;&#92;u00e9, d&#92;&#92;u00e8s 2019, un observatoire &#92;&#92;nde la mobilit&#92;&#92;u00e9 pour les villes de moins de 200.000 habitants. Son r&#92;&#92;u00e9seau &#92;&#92;nde Box autonomes innovantes, positionn&#92;&#92;u00e9es sur les routes, &#92;&#92;u00e0 la p&#92;&#92;u00e9riph&#92;&#92;u00e9rie &#92;&#92;ndes zones cibles, sera capable de caract&#92;&#92;u00e9riser les flux routiers gr&#92;&#92;u00e2ce &#92;&#92;u00e0 la &#92;&#92;ntechnologie du deep learning. L&#92;&#92;u2019ensemble du r&#92;&#92;u00e9seau sera coupl&#92;&#92;u00e9 &#92;&#92;u00e0 une &#92;&#92;nsolution logicielle d&#92;&#92;u2019analyse Origine Destination (O-D) reposant sur la fusion &#92;&#92;nde donn&#92;&#92;u00e9es collect&#92;&#92;u00e9es par les Box d&#92;&#92;u2019Alyce et les donn&#92;&#92;u00e9es Big Data mises &#92;&#92;u00e0 &#92;&#92;ndisposition par des op&#92;&#92;u00e9rateurs de t&#92;&#92;u00e9l&#92;&#92;u00e9communications mobiles europ&#92;&#92;u00e9ens.&#92;&#92;nCette solution, v&#92;&#92;u00e9ritable outil d&#92;&#92;u2019aide &#92;&#92;u00e0 la d&#92;&#92;u00e9cision, permettra aux &#92;&#92;u00e9lus des &#92;&#92;ncollectivit&#92;&#92;u00e9s locales comme &#92;&#92;u00e0 leurs ing&#92;&#92;u00e9nieries, de cartographier, mesurer et &#92;&#92;ncomprendre les enjeux routiers de leur territoire pour agir en accord avec les &#92;&#92;ndispositions &#92;&#92;u00e9conomiques et environnementales de leur pays.&#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PARIS (75)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 670 800 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Notre entreprise est une startup technologique qui d&#92;&#92;u00e9veloppe et &#92;&#92;ncommercialise des solutions logicielles et des applications mobiles &#92;&#92;ninnovantes destin&#92;&#92;u00e9es &#92;&#92;u00e0 optimiser la composition musicale. Notre activit&#92;&#92;u00e9 &#92;&#92;nrepose ainsi essentiellement sur de la R&amp;D dans les domaines du machine &#92;&#92;nlearning et du signal processing. &#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet Symphonia ambitionne de r&#92;&#92;u00e9inventer radicalement la mani&#92;&#92;u00e8re de &#92;&#92;ncomposer de la musique en proposant une application mobile qui permet &#92;&#92;nnotamment gr&#92;&#92;u00e2ce &#92;&#92;u00e0 des algorithmes d&#92;&#92;u2019intelligence artificielle de cr&#92;&#92;u00e9er avec &#92;&#92;nun simple smartphone des musiques magnifiques au rendu professionnel.&#92;&quot;},{&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;IS&#92;&#92;u00c8RE (38)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 2 583 401 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;APIX Analytics con&#92;&#92;u00e7oit, d&#92;&#92;u00e9veloppe et commercialise de nouvelles g&#92;&#92;u00e9n&#92;&#92;u00e9rations &#92;&#92;nd&#92;&#92;u2019analyseurs multigaz &#92;&#92;u00e0 base de chromatographie, en rupture avec les &#92;&#92;ntechnologies conventionnelles, permettant, gr&#92;&#92;u00e2ce &#92;&#92;u00e0 la miniaturisation &#92;&#92;npermise par les micro/nanotechnologies sur silicium d&#92;&#92;u2019atteindre des niveaux &#92;&#92;nin&#92;&#92;u00e9gal&#92;&#92;u00e9s de performances &#92;&#92;u00e0 CAPEX et OPEX r&#92;&#92;u00e9duits.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet MILAN vise &#92;&#92;u00e0 d&#92;&#92;u00e9velopper une gamme innovante d&#92;&#92;u2019analyseurs &#92;&#92;nd&#92;&#92;u2019&#92;&#92;u00e9chantillons liquides afin d&#92;&#92;u2019apporter des informations plus pr&#92;&#92;u00e9cises et &#92;&#92;nen temps r&#92;&#92;u00e9el sur les proc&#92;&#92;u00e9d&#92;&#92;u00e9s industriels gr&#92;&#92;u00e2ce &#92;&#92;u00e0 la miniaturisation et &#92;&#92;n&#92;&#92;u00e0 l&#92;&#92;u2019int&#92;&#92;u00e9gration des instruments au plus pr&#92;&#92;u00e8s du process. Les principaux &#92;&#92;ndomaines d&#92;&#92;u2019application vis&#92;&#92;u00e9s sont : Oil&amp;Gaz, chimie, analyse de l&#92;&#92;u2019eau. Ces &#92;&#92;nnouveaux analyseurs permettront de r&#92;&#92;u00e9duire les co&#92;&#92;u00fbts de production, les &#92;&#92;nrejets de polluants et les d&#92;&#92;u00e9penses &#92;&#92;u00e9nerg&#92;&#92;u00e9tiques associ&#92;&#92;u00e9es. D&#92;&#92;u2019autre secteurs &#92;&#92;nd&#92;&#92;u2019activit&#92;&#92;u00e9s sont vis&#92;&#92;u00e9s &#92;&#92;u00e0 plus long terme comme la mesure des polluants &#92;&#92;ndans les eaux ou sols ouvrant ainsi de nouvelles perspectives sur le secteur &#92;&#92;nenvironnemental.&#92;&quot;}]&quot;' data-total-rows='707' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;LOCALISATION&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;MONTANT_PROJET&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;MONTANT_AIDE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;REALISATION&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;ACTIVITE_ENTREPRISE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;OBJECTIF_PROJET&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ENlG",
+      "code_hash": "94c39da563d049c7052aa7adf4387223",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "WFkf",
+      "code_hash": "32126a223a57f4ff5b3067c78597ea97",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='WFkf-0' random-id='f0f55fdd-469a-4a96-e51a-b2d0611f6f90'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;ab tasty&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;personnalisation&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;num&#92;&#92;u00e9rique&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:57,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PARIS (75)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 3 590 054&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;AB Tasty est le leader fran&#92;&#92;u00e7ais et europ&#92;&#92;u00e9en du march&#92;&#92;u00e9 de l&#92;&#92;u2019A/B Testing. &#92;&#92;nL&#92;&#92;u2019A/B Testing consiste &#92;&#92;u00e0 tester plusieurs variantes d&#92;&#92;u2019un site internet, chaque &#92;&#92;nversion &#92;&#92;u00e9tant pr&#92;&#92;u00e9sent&#92;&#92;u00e9e &#92;&#92;u00e0 une partie des internautes tandis que les donn&#92;&#92;u00e9es &#92;&#92;nde navigation des diff&#92;&#92;u00e9rents panels sont analys&#92;&#92;u00e9es pour mesurer l&#92;&#92;u2019impact de &#92;&#92;nchaque version.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;L&#92;&#92;u2019objectif du projet est de faire progresser le march&#92;&#92;u00e9 mondial du CRO vers la &#92;&#92;npremi&#92;&#92;u00e8re solution de personnalisation web et mobile, temps r&#92;&#92;u00e9el, totalement &#92;&#92;nautomatis&#92;&#92;u00e9e. Le recours aux techniques d&#92;&#92;u2019Intelligence Artificielle seront &#92;&#92;ndans ce cadre n&#92;&#92;u00e9cessaire pour : (1) comprendre le rapport des utilisateurs &#92;&#92;nau contenu et (2) personnaliser leurs exp&#92;&#92;u00e9riences en temps r&#92;&#92;u00e9el, de mani&#92;&#92;u00e8re &#92;&#92;ntotalement automatis&#92;&#92;u00e9e, au niveau de tous les &#92;&#92;u00e9l&#92;&#92;u00e9ments &#92;&#92;u00e0 disposition : &#92;&#92;ncontenus, images, structures des sites. &#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;ab7 industries&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;terrabios&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;agriculture innovante&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:38,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;HAUTE-GARONNE (31)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 626 806 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 197 565 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;AB7 Industries fabrique et commercialise des produits d&#92;&#92;u2019entretien de la &#92;&#92;nmaison, du jardin et des piscines, des produits cosm&#92;&#92;u00e9tiques et r&#92;&#92;u00e9pulsifs &#92;&#92;nainsi que des produits v&#92;&#92;u00e9t&#92;&#92;u00e9rinaires. La technologie d&#92;&#92;u2019AB7 Industries repose &#92;&#92;nsur l&#92;&#92;u2019incorporation d&#92;&#92;u2019actif dans des matrices polym&#92;&#92;u00e8res pour permettre une &#92;&#92;ndiffusion contr&#92;&#92;u00f4l&#92;&#92;u00e9e de l&#92;&#92;u2019actif dans le temps.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Les objectifs du projet Terrabios portent sur la formulation innovante de &#92;&#92;nbiostimulants microbiens et sur leur proc&#92;&#92;u00e9d&#92;&#92;u00e9 de production.&#92;&#92;nAB7 Industries propose un concept innovant de formulation en associant un&#92;&#92;nsupport biod&#92;&#92;u00e9gradable fonctionnel et des microorganismes b&#92;&#92;u00e9n&#92;&#92;u00e9fiques pour&#92;&#92;nles plantes. Cette formulation permettra aux microorganismes de r&#92;&#92;u00e9sister &#92;&#92;naux conditions de stockage ainsi qu&#92;&#92;u2019aux conditions hostiles existant lors de &#92;&#92;nl&#92;&#92;u2019introduction aupr&#92;&#92;u00e8s des racines des plantes (temp&#92;&#92;u00e9ratures, pH, comp&#92;&#92;u00e9titions&#92;&#92;nface aux autres microorganismes, &#92;&#92;u2026). Le taux de survie sera nettement &#92;&#92;nam&#92;&#92;u00e9lior&#92;&#92;u00e9.&#92;&#92;nC&#92;&#92;u2019est une innovation majeure qui va permettre une meilleure efficacit&#92;&#92;u00e9 des &#92;&#92;nproduits de biostimulation et/ou de biocontr&#92;&#92;u00f4le.&#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;accenta&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;accenta.ai&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;&#92;&#92;u00e9nergies renouvelables, stockage et syst&#92;&#92;u00e8mes &#92;&#92;u00e9nerg&#92;&#92;u00e9tiques&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:7,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;ESSONNE (91)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 790 331 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 355 649 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2021&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;ACCENTA d&#92;&#92;u00e9veloppe un syst&#92;&#92;u00e8me &#92;&#92;u00e9nerg&#92;&#92;u00e9tique comprenant une solution de &#92;&#92;nstockage des &#92;&#92;u00e9nergies thermiques du b&#92;&#92;u00e2timent et un syst&#92;&#92;u00e8me de pilotage &#92;&#92;nintelligent et auto-apprenant, qui permet d&#92;&#92;u2019atteindre des niveaux de &#92;&#92;nperformance in&#92;&#92;u00e9gal&#92;&#92;u00e9s tant en efficacit&#92;&#92;u00e9 &#92;&#92;u00e9nerg&#92;&#92;u00e9tique qu&#92;&#92;u2019en d&#92;&#92;u00e9carbonation, &#92;&#92;u00e0 &#92;&#92;nun co&#92;&#92;u00fbt comp&#92;&#92;u00e9titif par rapport aux &#92;&#92;u00e9nergies traditionnelles.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;ACCENTA d&#92;&#92;u00e9veloppe une solution de stockage des &#92;&#92;u00e9nergies thermiques &#92;&#92;nrenouvelables pour am&#92;&#92;u00e9liorer l&#92;&#92;u2019efficacit&#92;&#92;u00e9 &#92;&#92;u00e9nerg&#92;&#92;u00e9tique et environnementale &#92;&#92;ndes chaufferies bas carbone. Les nouvelles techniques de l&#92;&#92;u2019Intelligence &#92;&#92;nArtificielle (IA) et notamment de l&#92;&#92;u2019apprentissage automatique permettront &#92;&#92;nune am&#92;&#92;u00e9lioration significative des performances thermodynamiques.&#92;&#92;nAinsi le Projet concerne le d&#92;&#92;u00e9veloppement d&#92;&#92;u2019algorithmes d&#92;&#92;u2019IA et d&#92;&#92;u2019optimisation &#92;&#92;nqui s&#92;&#92;u2019int&#92;&#92;u00e9greront dans la suite logicielle &#92;&#92;u00e9dit&#92;&#92;u00e9e par ACCENTA qui assure la &#92;&#92;nperformance et la p&#92;&#92;u00e9rennit&#92;&#92;u00e9 des syst&#92;&#92;u00e8mes &#92;&#92;u00e9nerg&#92;&#92;u00e9tiques de chauffage et de &#92;&#92;nclimatisation des b&#92;&#92;u00e2timents bas carbone.&#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;aenitis technologies&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;ali-s&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;sant&#92;&#92;u00e9&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:80,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PRINCIPALE : PARIS (75) ET SEINE &#92;&#92;nET MARNE (77), SOUS-TRAITANCE ET &#92;&#92;nCOLLABORATIONS : MAINE-ET-LOIRE &#92;&#92;n(49), JURA (39), NORD (59)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 2 451 391 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2021&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Aenitis Technologies d&#92;&#92;u00e9veloppe des solutions innovantes de manipulation et &#92;&#92;nde filtration de cellules bas&#92;&#92;u00e9es sur les technologies d&#92;&#92;u2019acoustophor&#92;&#92;u00e8se.&#92;&#92;nLa Soci&#92;&#92;u00e9t&#92;&#92;u00e9 se concentre sur le d&#92;&#92;u00e9veloppement de solutions technologiques &#92;&#92;nqui vont permettre de r&#92;&#92;u00e9volutionner les pratiques actuelles des proc&#92;&#92;u00e9d&#92;&#92;u00e9s &#92;&#92;nde pr&#92;&#92;u00e9paration en th&#92;&#92;u00e9rapie cellulaire relevant d&#92;&#92;u2019enjeux de sant&#92;&#92;u00e9 publique &#92;&#92;nmajeurs.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le pancr&#92;&#92;u00e9as est un organe vital majeur dont tout dysfonctionnement &#92;&#92;nengendre de lourds traitements m&#92;&#92;u00e9dicaux. La greffe de pancr&#92;&#92;u00e9as &#92;&#92;u00e9tant &#92;&#92;nune solution aux risques de l&#92;&#92;u00e9talit&#92;&#92;u00e9 &#92;&#92;u00e9lev&#92;&#92;u00e9s (45% de rejets de greffe), des &#92;&#92;nrecherches en th&#92;&#92;u00e9rapies cellulaires ont permis des allogreffes et des &#92;&#92;nautogreffes d&#92;&#92;u2019&#92;&#92;u00eelots de Langerhans pour pallier les d&#92;&#92;u00e9r&#92;&#92;u00e8glements insulaires. &#92;&#92;nCes th&#92;&#92;u00e9rapies peu risqu&#92;&#92;u00e9es sont reconnues pour leur efficacit&#92;&#92;u00e9 et agr&#92;&#92;u00e9&#92;&#92;u00e9es &#92;&#92;ndans de nombreux pays. H&#92;&#92;u00e9las, elles souffrent de m&#92;&#92;u00e9thodes de tri et de &#92;&#92;npurification contraignantes et dont les rendements sont bas. &#92;&#92;nLe projet ALI-S r&#92;&#92;u00e9volutionne ce paradigme afin de rendre plus simples et &#92;&#92;nplus efficaces ces bioproc&#92;&#92;u00e9d&#92;&#92;u00e9s.&#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;airweb&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;ticket_universel&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;transport et mobilit&#92;&#92;u00e9 durable&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:24,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;HAUTS-DE-SEINE &#92;&#92;n(92)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 671 932 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 302 369 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2019&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;AIRWEB est un &#92;&#92;u00e9diteur de solutions logicielles &#92;&#92;u00e0 destination des &#92;&#92;nexploitants de r&#92;&#92;u00e9seaux de transports publics. Les solutions comprennent &#92;&#92;nles fonctionnalit&#92;&#92;u00e9s d&#92;&#92;u2019informations voyageur, de calcul d&#92;&#92;u2019itin&#92;&#92;u00e9raire, et de &#92;&#92;nbillettique d&#92;&#92;u00e9mat&#92;&#92;u00e9rialis&#92;&#92;u00e9e.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet vise &#92;&#92;u00e0 d&#92;&#92;u00e9velopper les briques technologiques n&#92;&#92;u00e9cessaires pour &#92;&#92;n&#92;&#92;u00e9tablir un service de Titres de transport Universel.&#92;&#92;nEn premier lieu, il s&#92;&#92;u2019agira de d&#92;&#92;u00e9velopper une solution AIRWEB (application &#92;&#92;net surtout back-office) proposant toutes les offres des r&#92;&#92;u00e9seaux partenaires, &#92;&#92;nbas&#92;&#92;u00e9e sur le socle M-TICKET_ROUTE, d&#92;&#92;u00e9velopp&#92;&#92;u00e9 avec le soutien du &#92;&#92;nProgramme des Investissements d&#92;&#92;u2019Avenir en 2016.&#92;&#92;nEn second lieu, il s&#92;&#92;u2019agira de d&#92;&#92;u00e9velopper un service de billettique d&#92;&#92;u00e9mat&#92;&#92;u00e9rialis&#92;&#92;u00e9e &#92;&#92;nuniverselle &#92;&#92;u00e0 destination de tout usager d&#92;&#92;u00e9sirant emprunter un r&#92;&#92;u00e9seau de &#92;&#92;ntransport public. Le paiement se faisant &#92;&#92;u00e0 la consommation en fonction des &#92;&#92;nr&#92;&#92;u00e9seaux emprunt&#92;&#92;u00e9s durant son trajet.&#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;alphee developpement&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;smart20&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;transport et mobilit&#92;&#92;u00e9 durable&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:25,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;SAVIGNY (69)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 750 624 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 300 348 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2019&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Cr&#92;&#92;u00e9&#92;&#92;u00e9e en 1995, ALPHEE DEVELOPPEMENT, soci&#92;&#92;u00e9t&#92;&#92;u00e9 d&#92;&#92;u2019ing&#92;&#92;u00e9nierie, se &#92;&#92;npositionne dans les domaines de l&#92;&#92;u2019&#92;&#92;u00e9lectronique de puissance et de la &#92;&#92;nconversion d&#92;&#92;u2019&#92;&#92;u00e9nergie appliqu&#92;&#92;u00e9s au transport et &#92;&#92;u00e0 l&#92;&#92;u2019industrie. Avec plus de &#92;&#92;n10 000 chargeurs en service dans les v&#92;&#92;u00e9hicules &#92;&#92;u00e9lectriques (VE), ALPHEE &#92;&#92;nest est une r&#92;&#92;u00e9f&#92;&#92;u00e9rence dans la conception et la fourniture d&#92;&#92;u2019alimentations et &#92;&#92;nde chargeurs embarqu&#92;&#92;u00e9s dans le monde de l&#92;&#92;u2019&#92;&#92;u00e9lectromobilit&#92;&#92;u00e9.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Fort de son exp&#92;&#92;u00e9rience, de son savoir-faire &#92;&#92;u00e9lectronique et technologique, &#92;&#92;net de la tendance lourde de l&#92;&#92;u2019&#92;&#92;u00e9lectrification des v&#92;&#92;u00e9hicules urbains, ALPHEE &#92;&#92;nDEVELOPPEMENT souhaite d&#92;&#92;u00e9velopper et commercialiser la brique de &#92;&#92;npuissance SMART20 qui sera unique et comp&#92;&#92;u00e9titive sur le march&#92;&#92;u00e9 du VE en &#92;&#92;nFrance et en Europe. Ce module de forte puissance 20kW pourra adresser une &#92;&#92;nmultitude d&#92;&#92;u2019applications de chargeurs de batterie embarqu&#92;&#92;u00e9s (auto, utilitaires, &#92;&#92;npoids lourd, bus, v&#92;&#92;u00e9hicules sp&#92;&#92;u00e9ciaux de puissance 7kW monophas&#92;&#92;u00e9/20kW &#92;&#92;ntriphas&#92;&#92;u00e9) et stationnaires (stations de charges DC optimis&#92;&#92;u00e9es de puissance &#92;&#92;n20/40/60/80/100kW) sur une large plage de tension batterie (85V &#92;&#92;u00e0 850V) &#92;&#92;ncouvrant quasiment 100% des solutions batteries des VE actuels et &#92;&#92;u00e0 venir.&#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;alsid&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;ngcyss&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;s&#92;&#92;u00e9curit&#92;&#92;u00e9 et cybers&#92;&#92;u00e9curit&#92;&#92;u00e9&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:88,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PARIS (75)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 1 049 693 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;La soci&#92;&#92;u00e9t&#92;&#92;u00e9 ALSID d&#92;&#92;u00e9veloppe une solution novatrice totalement diff&#92;&#92;u00e9renciante &#92;&#92;nsur le march&#92;&#92;u00e9 de l&#92;&#92;u2019Active Directory visant &#92;&#92;u00e0 prot&#92;&#92;u00e9ger les architectures &#92;&#92;nd&#92;&#92;u2019annuaire.&#92;&#92;nLa solution s&#92;&#92;u2019adresse &#92;&#92;u00e0 une population de d&#92;&#92;u00e9cideurs : la complexit&#92;&#92;u00e9 technique &#92;&#92;ndes syst&#92;&#92;u00e8mes sous-jacents est abstraite et synth&#92;&#92;u00e9tis&#92;&#92;u00e9e sous forme de &#92;&#92;ntableaux de bord et de scores clairs.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet DSC port&#92;&#92;u00e9 par la soci&#92;&#92;u00e9t&#92;&#92;u00e9 ALSID vise &#92;&#92;u00e0 accompagner les entreprises &#92;&#92;n&#92;&#92;u00e0 prot&#92;&#92;u00e9ger les architectures d&#92;&#92;u2019annuaire, domaine encore peu mature en &#92;&#92;ntermes de connaissance et d&#92;&#92;u2019outillage, et largement pr&#92;&#92;u00e9empt&#92;&#92;u00e9 &#92;&#92;u00e0 ce jour par &#92;&#92;nMicrosoft. &#92;&#92;nLes architectures Active Directory, bien que d&#92;&#92;u00e9ploy&#92;&#92;u00e9es &#92;&#92;u00e0 grande &#92;&#92;u00e9chelle dans &#92;&#92;nla majorit&#92;&#92;u00e9 des entreprises, sont tr&#92;&#92;u00e8s peu connues, car mettent en jeu des &#92;&#92;nprocessus d&#92;&#92;u2019ing&#92;&#92;u00e9nierie complexes. &#92;&#92;nL&#92;&#92;u2019approche fondamentale d&#92;&#92;u2019ALSID est de mettre &#92;&#92;u00e0 disposition des &#92;&#92;nresponsables des technologies tr&#92;&#92;u00e8s pointues de s&#92;&#92;u00e9curit&#92;&#92;u00e9, d&#92;&#92;u2019utilisation rendue &#92;&#92;ntriviale, afin de permettre une diffusion g&#92;&#92;u00e9n&#92;&#92;u00e9ralis&#92;&#92;u00e9e de la protection proactive &#92;&#92;ndes infrastructures Active Directory. &#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;alyce&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;observer&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;transport et mobilit&#92;&#92;u00e9 durable&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:26,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;RH&#92;&#92;u00d4NE-ALPES (69), &#92;&#92;nHAUT-DE -SEINE (92)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 798 360 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:&#92;&quot; 336 852 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2019&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Fond&#92;&#92;u00e9e &#92;&#92;u00e0 Lyon en janvier 2000, ALYCE, sp&#92;&#92;u00e9cialiste du recueil de donn&#92;&#92;u00e9es &#92;&#92;nrouti&#92;&#92;u00e8res, r&#92;&#92;u00e9alise plus de 500 missions par an, en particulier des comptages, &#92;&#92;ndes mesures, et des enqu&#92;&#92;u00eates Origine Destination de tout type. Ces donn&#92;&#92;u00e9es &#92;&#92;nservent de base de travail &#92;&#92;u00e0 la r&#92;&#92;u00e9alisation d&#92;&#92;u2019&#92;&#92;u00e9tudes, principalement dans &#92;&#92;nles domaines de la circulation, des transports et de l&#92;&#92;u2019am&#92;&#92;u00e9nagement des &#92;&#92;ninfrastructures.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;ALYCE entend concevoir et mettre sur le march&#92;&#92;u00e9, d&#92;&#92;u00e8s 2019, un observatoire &#92;&#92;nde la mobilit&#92;&#92;u00e9 pour les villes de moins de 200.000 habitants. Son r&#92;&#92;u00e9seau &#92;&#92;nde Box autonomes innovantes, positionn&#92;&#92;u00e9es sur les routes, &#92;&#92;u00e0 la p&#92;&#92;u00e9riph&#92;&#92;u00e9rie &#92;&#92;ndes zones cibles, sera capable de caract&#92;&#92;u00e9riser les flux routiers gr&#92;&#92;u00e2ce &#92;&#92;u00e0 la &#92;&#92;ntechnologie du deep learning. L&#92;&#92;u2019ensemble du r&#92;&#92;u00e9seau sera coupl&#92;&#92;u00e9 &#92;&#92;u00e0 une &#92;&#92;nsolution logicielle d&#92;&#92;u2019analyse Origine Destination (O-D) reposant sur la fusion &#92;&#92;nde donn&#92;&#92;u00e9es collect&#92;&#92;u00e9es par les Box d&#92;&#92;u2019Alyce et les donn&#92;&#92;u00e9es Big Data mises &#92;&#92;u00e0 &#92;&#92;ndisposition par des op&#92;&#92;u00e9rateurs de t&#92;&#92;u00e9l&#92;&#92;u00e9communications mobiles europ&#92;&#92;u00e9ens.&#92;&#92;nCette solution, v&#92;&#92;u00e9ritable outil d&#92;&#92;u2019aide &#92;&#92;u00e0 la d&#92;&#92;u00e9cision, permettra aux &#92;&#92;u00e9lus des &#92;&#92;ncollectivit&#92;&#92;u00e9s locales comme &#92;&#92;u00e0 leurs ing&#92;&#92;u00e9nieries, de cartographier, mesurer et &#92;&#92;ncomprendre les enjeux routiers de leur territoire pour agir en accord avec les &#92;&#92;ndispositions &#92;&#92;u00e9conomiques et environnementales de leur pays.&#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;ap&amp;bs&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;symphonia&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;num&#92;&#92;u00e9rique&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:58,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;PARIS (75)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 670 800 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;Notre entreprise est une startup technologique qui d&#92;&#92;u00e9veloppe et &#92;&#92;ncommercialise des solutions logicielles et des applications mobiles &#92;&#92;ninnovantes destin&#92;&#92;u00e9es &#92;&#92;u00e0 optimiser la composition musicale. Notre activit&#92;&#92;u00e9 &#92;&#92;nrepose ainsi essentiellement sur de la R&amp;D dans les domaines du machine &#92;&#92;nlearning et du signal processing. &#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet Symphonia ambitionne de r&#92;&#92;u00e9inventer radicalement la mani&#92;&#92;u00e8re de &#92;&#92;ncomposer de la musique en proposant une application mobile qui permet &#92;&#92;nnotamment gr&#92;&#92;u00e2ce &#92;&#92;u00e0 des algorithmes d&#92;&#92;u2019intelligence artificielle de cr&#92;&#92;u00e9er avec &#92;&#92;nun simple smartphone des musiques magnifiques au rendu professionnel.&#92;&quot;},{&#92;&quot;ENTREPRISE&#92;&quot;:&#92;&quot;apix analytics&#92;&quot;,&#92;&quot;PROJET&#92;&quot;:&#92;&quot;milan&#92;&quot;,&#92;&quot;THEMATIQUE&#92;&quot;:&#92;&quot;french fab&#92;&quot;,&#92;&quot;PAGE&#92;&quot;:94,&#92;&quot;VAGUE&#92;&quot;:1,&#92;&quot;LOCALISATION&#92;&quot;:&#92;&quot;IS&#92;&#92;u00c8RE (38)&#92;&quot;,&#92;&quot;MONTANT_PROJET&#92;&quot;:&#92;&quot; 2 583 401 &#92;&#92;u20ac&#92;&quot;,&#92;&quot;MONTANT_AIDE&#92;&quot;:null,&#92;&quot;REALISATION&#92;&quot;:&#92;&quot; 2018 - 2020&#92;&quot;,&#92;&quot;ACTIVITE_ENTREPRISE&#92;&quot;:&#92;&quot;APIX Analytics con&#92;&#92;u00e7oit, d&#92;&#92;u00e9veloppe et commercialise de nouvelles g&#92;&#92;u00e9n&#92;&#92;u00e9rations &#92;&#92;nd&#92;&#92;u2019analyseurs multigaz &#92;&#92;u00e0 base de chromatographie, en rupture avec les &#92;&#92;ntechnologies conventionnelles, permettant, gr&#92;&#92;u00e2ce &#92;&#92;u00e0 la miniaturisation &#92;&#92;npermise par les micro/nanotechnologies sur silicium d&#92;&#92;u2019atteindre des niveaux &#92;&#92;nin&#92;&#92;u00e9gal&#92;&#92;u00e9s de performances &#92;&#92;u00e0 CAPEX et OPEX r&#92;&#92;u00e9duits.&#92;&quot;,&#92;&quot;OBJECTIF_PROJET&#92;&quot;:&#92;&quot;Le projet MILAN vise &#92;&#92;u00e0 d&#92;&#92;u00e9velopper une gamme innovante d&#92;&#92;u2019analyseurs &#92;&#92;nd&#92;&#92;u2019&#92;&#92;u00e9chantillons liquides afin d&#92;&#92;u2019apporter des informations plus pr&#92;&#92;u00e9cises et &#92;&#92;nen temps r&#92;&#92;u00e9el sur les proc&#92;&#92;u00e9d&#92;&#92;u00e9s industriels gr&#92;&#92;u00e2ce &#92;&#92;u00e0 la miniaturisation et &#92;&#92;n&#92;&#92;u00e0 l&#92;&#92;u2019int&#92;&#92;u00e9gration des instruments au plus pr&#92;&#92;u00e8s du process. Les principaux &#92;&#92;ndomaines d&#92;&#92;u2019application vis&#92;&#92;u00e9s sont : Oil&amp;Gaz, chimie, analyse de l&#92;&#92;u2019eau. Ces &#92;&#92;nnouveaux analyseurs permettront de r&#92;&#92;u00e9duire les co&#92;&#92;u00fbts de production, les &#92;&#92;nrejets de polluants et les d&#92;&#92;u00e9penses &#92;&#92;u00e9nerg&#92;&#92;u00e9tiques associ&#92;&#92;u00e9es. D&#92;&#92;u2019autre secteurs &#92;&#92;nd&#92;&#92;u2019activit&#92;&#92;u00e9s sont vis&#92;&#92;u00e9s &#92;&#92;u00e0 plus long terme comme la mesure des polluants &#92;&#92;ndans les eaux ou sols ouvrant ainsi de nouvelles perspectives sur le secteur &#92;&#92;nenvironnemental.&#92;&quot;}]&quot;' data-total-rows='707' data-total-columns='11' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;ENTREPRISE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;PROJET&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;THEMATIQUE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;PAGE&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;VAGUE&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;LOCALISATION&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;MONTANT_PROJET&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;MONTANT_AIDE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;REALISATION&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;ACTIVITE_ENTREPRISE&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;OBJECTIF_PROJET&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

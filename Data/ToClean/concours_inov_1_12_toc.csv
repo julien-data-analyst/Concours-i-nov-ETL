@@ -46,15 +46,15 @@ KLEARIA;MICROPOLTRACK;ÉCOSYSTÈMES TERRESTRES, AQUATIQUES ET MARINS;51;1
 LIBRICIEL SCOP SA;IPNG;NUMÉRIQUE;66;1
 LyophiTech ;LYOAC;ALIMENTATION INTELLIGENTE;102;1
 MagIA Diagnostics SAS;MagIABioprod ;SANTÉ;82;1
-Mascara Nouvelles Technologies ECO DESSALEMENT SOLAIRE;ÉCOSYSTÈMES TERRESTRES, AQUATIQUES ET MARINS;52;MC2 Technologies;1
-SACOP;SÉCURITÉ ET CYBERSÉCURITÉ;89;Metagritech;1
-Hydroferti;AGRICULTURE INNOVANTE;45;MilliDrop Instrument SAS;1
-DIHAG ;SANTÉ;83;MJVA-Creaminal;1
-bridg.audio;NUMÉRIQUE;67;MultiX S.A.;1
-AUTOSOFT ;SÉCURITÉ ET CYBERSÉCURITÉ;90;MYRIADE;1
-COLE;SANTÉ;84;NETATMO;1
-NHA;NUMÉRIQUE;68;NEWHEAT;1
-SCALE&MIX;ÉNERGIES RENOUVELABLES, STOCKAGE ET SYSTÈMES ÉNERGÉTIQUES;17;Index des entreprises lauréates;1
+Mascara Nouvelles Technologies;ECO DESSALEMENT SOLAIRE;ÉCOSYSTÈMES TERRESTRES, AQUATIQUES ET MARINS;52;1
+MC2 Technologies;SACOP;SÉCURITÉ ET CYBERSÉCURITÉ;89;1
+Metagritech;Hydroferti;AGRICULTURE INNOVANTE;45;1
+MilliDrop Instrument SAS;DIHAG ;SANTÉ;83;1
+MJVA-Creaminal;bridg.audio;NUMÉRIQUE;67;1
+MultiX S.A.;AUTOSOFT ;SÉCURITÉ ET CYBERSÉCURITÉ;90;1
+MYRIADE;COLE;SANTÉ;84;1
+NETATMO;NHA;NUMÉRIQUE;68;1
+NEWHEAT;SCALE&MIX;ÉNERGIES RENOUVELABLES, STOCKAGE ET SYSTÈMES ÉNERGÉTIQUES;17;1
 Nextmind;NeurAction ;NUMÉRIQUE;69;1
 Odit-e;UTILIT-e;ÉNERGIES RENOUVELABLES, STOCKAGE ET SYSTÈMES ÉNERGÉTIQUES;18;1
 OWNEST SAS;OWNEST ;NUMÉRIQUE;70;1
@@ -125,10 +125,10 @@ MagIA Diagnostics;MagIA Diag IST ;Santé;57;2
 MEDIMPRINT;DETIC;Santé;58;2
 METAFORA biosystems;CellMETA-analyzer ;Santé;59;2
 MODETIC / L’équipe 1083;MONCOTON;Economie circulaire;27;2
-NEXT4;ISCT - International Supply Chain Trackers Espace;66;NEXTFLOW Software;2
-FINISHH;Numérique;44;Nomad Education;2
-Revision Adaptive 2.0 ;Numérique;45;NovaGray;2
-NovaGray Chir;Santé;60;Index des entreprises lauréates;2
+NEXT4;ISCT - International Supply Chain Trackers;Espace;66;2
+NEXTFLOW Software;FINISHH;Numérique;44;2
+Nomad Education;Revision Adaptive 2.0 ;Numérique;45;2
+NovaGray;NovaGray Chir;Santé;60;2
 OKEENEA;KLEVER;Société inclusive et solidaire;71;2
 OROSOUND;DASH;Expositions chroniques et risques sanitaires;34;2
 Payfit;Payfit;Numérique;46;2
@@ -209,7 +209,7 @@ UTTI;CORAIL;French Fab;43;3
 VATES;XCP-ng Shield;Sécurité Cybersécurité;66;3
 VEL'CO;MOVE 2021;Transport et mobilité durable;36;3
 WATCHFROG;PACQUE;Eau et biodiversité;10;3
-ZOO TECHNIC Group Elastoteck ZooTechnic;Agriculture innovante;69;INDEX des entreprises lauréates;3
+ZOO TECHNIC Group Elastoteck;ZooTechnic;Agriculture innovante;69;3
 365Talents;TAMARIN;Numérique Deep Tech;48;4
 Absolut System SAS;CRYASSY;Espace;39;4
 ADAGOS;GoS;Numérique Deep Tech;49;4
@@ -378,20 +378,20 @@ ISAHIT ;ISAHIT-AI;Numérique Deep Tech;46;6
 Kimialys;O2DIAG;Santé - santé mentale et diagnostics rapides et nomades;60;6
 LEANSPACE ;Leanspace-PaaS;Espace;39;6
 Lumedix;Ramones;Santé - santé mentale et diagnostics rapides et nomades;61;6
-METAVERSE TECHNOLOGIES  France PULSE 3D;Numérique Deep Tech;47;MillionRoads;6
-HumanRoads;Numérique Deep Tech;48;MY TRAFFIC;6
-MTFV;Numérique Deep Tech;49;NEOVYA Mobilité ;6
-HUBSIM;Adaptation des territoires au changement climatique et  métrologie des expositions environnementales;8;Nimesis Technology;6
-DEWS;Adaptation des territoires au changement climatique et  métrologie des expositions environnementales;9;OCEAN Dx ;6
-OCEANuniversel;Santé - santé mentale et diagnostics rapides et nomades;64;PROOV STATION;6
-SMART INSPECTOR 2.0;Numérique Deep Tech;50;PROPHESEE ;6
-NISP;Numérique Deep Tech;51;QUANDELA ;6
-ROQC;Numérique Deep Tech;52;SDS logistique ;6
-Stock central;Économie circulaire;17;Sêmeia ;6
-APPRenD2;Santé - santé mentale et diagnostics rapides et nomades;62;SESTERCE;6
-FPGA4BC Xchip;Numérique Deep Tech;53;SMARTCATCH;6
-SMART-DETECT;Santé - santé mentale et diagnostics rapides et nomades;63;Sublime Energie ;6
-Charlie;Économie circulaire;18;INDEX des entreprises lauréates;6
+METAVERSE TECHNOLOGIES;France PULSE 3D France PULSE 3D;Numérique Deep Tech;47;6
+MillionRoads;HumanRoads;Numérique Deep Tech;48;6
+MY TRAFFIC;MTFV;Numérique Deep Tech;49;6
+NEOVYA Mobilité ;HUBSIM;Adaptation des territoires au changement climatique et  métrologie des expositions environnementales;8;6
+Nimesis Technology;DEWS;Adaptation des territoires au changement climatique et  métrologie des expositions environnementales;9;6
+OCEAN Dx ;OCEANuniversel;Santé - santé mentale et diagnostics rapides et nomades;64;6
+PROOV STATION;SMART INSPECTOR 2.0;Numérique Deep Tech;50;6
+PROPHESEE ;NISP;Numérique Deep Tech;51;6
+QUANDELA ;ROQC;Numérique Deep Tech;52;6
+SDS logistique ;Stock central;Économie circulaire;17;6
+Sêmeia ;APPRenD2;Santé - santé mentale et diagnostics rapides et nomades;62;6
+SESTERCE;FPGA4BC Xchip;Numérique Deep Tech;53;6
+SMARTCATCH;SMART-DETECT;Santé - santé mentale et diagnostics rapides et nomades;63;6
+Sublime Energie ;Charlie;Économie circulaire;18;6
 Telaqua;Irrigeasy;Adaptation des territoires au changement climatique et  métrologie des expositions environnementales;10;6
 Terria;Terria;Performance environnementale des bâtiments;31;6
 THE AI INSTITUTE ;ABCode-IA;Numérique Deep Tech;54;6

@@ -59,19 +59,44 @@ def extract_concours_inov_1_6(path_pdf="", export=False, path=""):
 
                 # Si on a commencé l'extraction
                 if comm_page :
-                    if resultat_match == "6" and bytes("COMBO", "utf8") in elt:
-                        entreprise = bytes("Vesta Construction Technologies", "utf8")
-                        projet = bytes("COMBO", "utf8")
-                        liste_ligne.append(entreprise)
-                        liste_ligne.append(projet)
+                    if not bytes("index des entreprises", "utf8") in elt.lower():
+                        if resultat_match == "2" and bytes("ISCT - International Supply Chain Trackers", "utf8") in elt:
+                            projet = bytes("ISCT - International Supply Chain Trackers", 'utf8')
+                            thematique = bytes("Espace", "utf8")
+                            liste_ligne.append(projet)
+                            liste_ligne.append(thematique)
 
-                    elif elt in word_trait_part:
-                            #print(liste_ligne)
-                            # Fusionner avec l'élément d'avant
-                            liste_ligne[len(liste_ligne)-1] += bytes(" ", "utf8") + elt
-                    else:
-                        # Récupérer l'élément
-                        liste_ligne.append(elt)
+                        elif resultat_match == "3" and bytes("ZOO TECHNIC", "utf8") in elt:
+                            entreprise = bytes("ZOO TECHNIC Group Elastoteck", "utf8")
+                            projet = bytes("ZooTechnic", "utf8")
+                            liste_ligne.append(entreprise)
+                            liste_ligne.append(projet)
+
+                        elif resultat_match == "6" and bytes("METAVERSE TECHNOLOGIES", "utf8") in elt:
+                            entreprise = bytes("METAVERSE TECHNOLOGIES", "utf8")
+                            projet = bytes("France PULSE 3D", "utf8")
+                            liste_ligne.append(entreprise)
+                            liste_ligne.append(projet)
+
+                        elif resultat_match == "1" and bytes("Mascara Nouvelles Technologies", "utf8") in elt:
+                            entreprise = bytes("Mascara Nouvelles Technologies", "utf8")
+                            projet = bytes("ECO DESSALEMENT SOLAIRE", "utf8")
+                            liste_ligne.append(entreprise)
+                            liste_ligne.append(projet)
+
+                        elif resultat_match == "6" and bytes("COMBO", "utf8") in elt:
+                            entreprise = bytes("Vesta Construction Technologies", "utf8")
+                            projet = bytes("COMBO", "utf8")
+                            liste_ligne.append(entreprise)
+                            liste_ligne.append(projet)
+
+                        elif elt in word_trait_part:
+                                #print(liste_ligne)
+                                # Fusionner avec l'élément d'avant
+                                liste_ligne[len(liste_ligne)-1] += bytes(" ", "utf8") + elt
+                        else:
+                            # Récupérer l'élément
+                            liste_ligne.append(elt)
 
                     # Si on a récupéré quatre éléments, on a récupéré une ligne
                     if len(liste_ligne) == 4:
