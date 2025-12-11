@@ -1,13 +1,13 @@
 ##############################-
 # Sujet : Extraction du sommaire pour les concours de 7 à 10
-# Date : 29/11/2025
-# Auteur : Julien RENOULT
+# Date : 29/11/2025 - 11/12/2025
 #############################-
 import pymupdf
 import pymupdf
 import pandas as pd
 import re 
 import os
+from words_pdf import search_words_extract
 
 def extract_concours_inov_7_10(path_pdf="", export=False, path=""):
 
@@ -106,3 +106,85 @@ def extract_concours_inov_7_10(path_pdf="", export=False, path=""):
     else:
         return df
     
+# Fonction permettant de récupérer les informations d'un projet dans les concours 7 à 10
+def extract_inf_project_7_10(page):
+    """
+    Function : extract the project information by the given page
+
+    Args :
+    - page : PDF page to use to extract the information of the project
+
+    Return :
+    a dict of results containing informations on the project
+    """
+    # Extract the geographic localisation
+    result_loc = search_words_extract("LOCALISATION", 
+                    page,
+                    "x1", 
+                    150,
+                    -2,
+                     2
+                    )
+
+    # Extract the amount of cost project
+    result_amount_proj = search_words_extract("Montant du projet", 
+                    page,
+                    "x1", 
+                    230,
+                    0,
+                     0
+                    )
+
+    # Extract the amount of allowance 
+    result_allowance = search_words_extract("Aide accordée", 
+                     page,
+                     "x1", 
+                    230,
+                    0,
+                     0
+                    )
+
+    # Extract the realisation years
+    result_years = search_words_extract("Réalisation", 
+                    page,
+                    "x1", 
+                    160,
+                    0,
+                     0
+                    )
+
+    # Extract the activity and project goal
+    zone_contact_presse = page.search_for("Contact presse")[0]
+    zone_aide_acc = page.search_for("Aide accordée")[0]
+
+    x0_act = zone_contact_presse.x0
+    y0_act = zone_aide_acc.y1 + 60
+    x1_act = page.rect.x1
+    y1_act = zone_contact_presse.y0 - 2
+    rect_activite = pymupdf.Rect(x0_act, y0_act, x1_act, y1_act)
+
+    result_blocks = page.get_text(option="blocks", clip=rect_activite)
+
+    #print(result_blocks)
+
+    if len(result_blocks) == 2:
+        result_activity = result_blocks[0][4]
+        result_goal = result_blocks[1][4]
+    elif len(result_blocks) > 2:
+        result_activity = result_blocks[0][4]
+
+        result_goal = ""
+        for elt in result_blocks[1:]:
+            result_goal += elt[4] + " "
+    else:
+        result_activity = None
+        result_goal = result_blocks[0][4]
+
+    return {
+        "LOCALISATION" : result_loc,
+        "MONTANT_PROJET" : result_amount_proj,
+        "MONTANT_AIDE" : result_allowance,
+        "REALISATION" : result_years,
+        "ACTIVITE_ENTREPRISE" : result_activity,
+        "OBJECTIF_PROJET" : result_goal
+    }

@@ -1,7 +1,6 @@
 ##############################-
 # Sujet : Téléchargement des fichiers PDF
 # Date : 30/11/2025
-# Auteur : Julien RENOULT
 #############################-
 
 # Chargement de la librairie pour télécharger les fichiers PDF

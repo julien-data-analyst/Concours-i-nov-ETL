@@ -1,7 +1,6 @@
 ##############################-
 # Sujet : Extraction du sommaire pour les concours de 1 à 6
-# Date : 29/11/2025 - 30/11/2025
-# Auteur : Julien RENOULT
+# Date : 29/11/2025 - 11/12/2025
 #############################-
 
 # Chargement des librairies
@@ -9,6 +8,7 @@ import pymupdf
 import pandas as pd
 import re 
 import os
+from words_pdf import search_words_extract
 
 def extract_concours_inov_1_6(path_pdf="", export=False, path=""):
 
@@ -128,4 +128,158 @@ def extract_concours_inov_1_6(path_pdf="", export=False, path=""):
     else:
         return df
 
-   
+
+# Fonction permettant de récupérer les informations d'un projet dans les concours 1 à 6
+def extract_inf_project_1_6(page):
+    """
+    Function : extract the project information by the given page
+
+    Args :
+    - page : PDF page to use to extract the information of the project
+
+    Return :
+    a dict of results containing informations on the project
+    """
+    # Extract the localisation
+    # pattern to extract the localisations
+    pattern_research_loc = r'LOCALISATION\s*>\s*(.*?)(?=\s*R[ÉE]ALISATION\s*>|$)'
+
+    string_research_loc = search_words_extract("LOCALISATION >", 
+                        page,
+                        0, 
+                        80,
+                        0,
+                         100
+                        )
+    if not string_research_loc is None:
+        resultat_search = re.search(pattern_research_loc, string_research_loc, flags=re.DOTALL)
+
+        if resultat_search :
+            localisation_search = resultat_search.group(1).strip()
+            localisation_search = localisation_search.replace(">", "")
+        else:
+            localisation_search = ""
+    else:
+        localisation_search = None
+
+    # Extract the project amount
+
+    # First try
+    result_montant = search_words_extract("MONTANT DU PROJET", 
+                    page,
+                    "x1", 
+                    40,
+                    0,
+                     0
+                    )
+
+    # Second try if empty
+    if result_montant == "" or result_montant == ">":
+        result_montant = search_words_extract("MONTANT DU PROJET", 
+                    page,
+                    0, 
+                    80,
+                    "y1",
+                     10
+                    )
+
+    if result_montant is not None:
+        # nettoyage (">")
+        result_montant = result_montant.replace(">", "")
+
+    # Extract the allowance amount
+    result_aide = search_words_extract("DONT AIDE PIA", 
+                     page,
+                     "x1", 
+                    40,
+                    0,
+                     0
+                    )
+
+    # Second try if empty
+    if result_aide == "" or result_aide == ">":
+        result_aide = search_words_extract("DONT AIDE PIA", 
+                    page,
+                    0, 
+                    80,
+                    "y1",
+                     10
+                    )
+    # nettoyage (">")
+    if result_aide is not None:
+        result_aide = result_aide.replace(">", "")
+
+    # Extract the realisation years
+    result_years = search_words_extract("rÉalisation", 
+                    page,
+                    "x1", 
+                    70,
+                    0,
+                     0
+                    )
+    if result_years == "" or result_years == ">":
+        result_years = search_words_extract("rÉalisation", 
+                    page,
+                    0, 
+                    80,
+                    "y1",
+                     10
+                    )
+
+    if result_years == "" or result_years is None:
+        result_years = None
+    else:
+        # nettoyage (">")
+        result_years = result_years.replace(">", "")
+        if result_years == "":
+            result_years = None
+
+    # Extract the company activity and project goal
+    zone_activite = page.search_for("> ACTIVITÉ DE L’ENTREPRISE")
+    if zone_activite == []:
+        zone_activite = page.search_for("> ACTIVITÉDE L’ENTREPRISE")
+
+        if zone_activite != []:
+            zone_activite = zone_activite[0]
+    else:
+        zone_activite = zone_activite[0]
+
+    zone_objectif = page.search_for("> OBJECTIF DU PROJET")
+    if zone_objectif == []:
+        zone_objectif = page.search_for("> OBJECTIFDU PROJET")[0]
+    else:
+        zone_objectif = zone_objectif[0]
+
+    zone_contact_presse = pymupdf.Rect(49.05120086669922, 614.7211303710938, 80.85121154785156, 626.7510986328125)
+
+    ## Company activity
+    # Utilisation du début de la zone d'activité et de la fin avec Objectif
+    if zone_activite != []:
+        x0_comp = zone_activite.x0
+        y0_comp = zone_activite.y1
+        x1_comp = page.rect.x1
+        y1_comp = zone_objectif.y0 - 2
+        rect_activite = pymupdf.Rect(x0_comp, y0_comp, x1_comp, y1_comp)
+        result_activite = page.get_textbox(rect_activite)
+    else:
+        result_activite = None
+
+    ## Project goal
+    # Utilisation du début de la zone objectif et de la fin avec contact presse
+    x0_proj = zone_objectif.x0
+    y0_proj = zone_objectif.y1
+    x1_proj = page.rect.x1 - 10
+    y1_proj = zone_contact_presse.y0 + 5
+    rect_objectif = pymupdf.Rect(x0=x0_proj, y0=y0_proj, x1=x1_proj, y1=y1_proj)
+
+    result_objectif = page.get_textbox(rect_objectif)
+
+
+    return {
+            "LOCALISATION" : localisation_search, 
+            "MONTANT_PROJET" : result_montant, 
+            "MONTANT_AIDE" : result_aide, 
+            "REALISATION" : result_years, 
+            "ACTIVITE_ENTREPRISE" : result_activite, 
+            "OBJECTIF_PROJET" : result_objectif
+           }

@@ -1,7 +1,6 @@
 ##############################-
 # Sujet : Extraction du sommaire pour les concours de 11 à 12
-# Date : 29/11/2025
-# Auteur : Julien RENOULT
+# Date : 29/11/2025 - 11/12/2025
 #############################-
 
 # Chargement des librairies
@@ -10,6 +9,7 @@ import pymupdf
 import pandas as pd
 import re 
 import os 
+from words_pdf import search_words_extract
 
 def extract_concours_inov_11_12(path_pdf="", export=False, path=""):
 
@@ -96,3 +96,83 @@ def extract_concours_inov_11_12(path_pdf="", export=False, path=""):
             header=True, index=False, encoding="utf-8")
     else:
         return df
+
+# Fonction permettant de récupérer les informations d'un projet dans les concours 11 et 12
+def extract_inf_project_11_12(page):
+    """
+    Function : extract the project information by the given page
+
+    Args :
+    - page : PDF page to use to extract the information of the project
+
+    Return :
+    a dict of results containing informations on the project
+    """
+    # Extract the localisation
+    result_loc = search_words_extract("|", 
+                    page,
+                    -160, 
+                    180,
+                    -2,
+                     2
+                    )
+
+    # Extract the project cost
+    result_cost = search_words_extract("MONTANT TOTAL DU PROJET", 
+                    page,
+                    0, 
+                    80,
+                    "y1",
+                     10
+                    )
+
+    # Extract the allowance for the project
+    result_allowance = search_words_extract("MONTANT AIDE", 
+                    page,
+                    0, 
+                    80,
+                    "y1",
+                     10
+                    )
+
+    # Extract the realisation years / month extract
+    result_dury = search_words_extract("DurÉe du projet", 
+                    page,
+                    0, 
+                    100,
+                    "y1",
+                     4
+                    )
+
+    # Get the different zones for the paragraph extraction
+    zone_activite = page.search_for("ACTIVITÉ DE L’ENTREPRISE")[0]
+    zone_loc = page.search_for("|")[0]
+    zone_objectif = page.search_for("OBJECTIFS DU PROJET")[0]
+    zone_duree_projet = page.search_for("DURÉE DU PROJET")[0]
+
+    # for the activity of the company
+    x0_11_12 = zone_activite.x0
+    y0_11_12 = zone_activite.y1
+    x1_11_12 = zone_objectif.x0 - 1
+    y1_11_12 = zone_loc.y0 - 2
+    rect_activite_11_12 = pymupdf.Rect(x0=x0_11_12, y0=y0_11_12, x1=x1_11_12, y1=y1_11_12)
+    result_activity = page.get_textbox(rect_activite_11_12)
+
+    # for the project goal
+    x0_11_12_2 = zone_objectif.x0
+    y0_11_12_2 = zone_objectif.y1
+    x1_11_12_2 = page.rect.x1 - 5
+    y1_11_12_2 = zone_duree_projet.y0 - 10
+    rect_objectif_11_12 = pymupdf.Rect(x0_11_12_2, y0_11_12_2, x1_11_12_2, y1_11_12_2)
+    result_goal = page.get_textbox(rect_objectif_11_12)
+
+
+    # Return the results
+    return {
+        "LOCALISATION" : result_loc,
+        "MONTANT_PROJET" : result_cost,
+        "MONTANT_AIDE" : result_allowance,
+        "REALISATION" : result_dury,
+        "ACTIVITE_ENTREPRISE" : result_activity,
+        "OBJECTIF_PROJET" : result_goal        
+    }

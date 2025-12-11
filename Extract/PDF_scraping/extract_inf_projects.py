@@ -1064,7 +1064,7 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
                 localisation_search = ""
         else:
             localisation_search = None
-    
+
         # Extract the project amount
 
         # First try
@@ -1085,11 +1085,11 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
                         "y1",
                          10
                         )
-        
+
         if result_montant is not None:
             # nettoyage (">")
             result_montant = result_montant.replace(">", "")
-    
+
         # Extract the allowance amount
         result_aide = search_words_extract("DONT AIDE PIA", 
                          page,
@@ -1098,7 +1098,7 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
                         0,
                          0
                         )
-    
+
         # Second try if empty
         if result_aide == "" or result_aide == ">":
             result_aide = search_words_extract("DONT AIDE PIA", 
@@ -1111,7 +1111,7 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
         # nettoyage (">")
         if result_aide is not None:
             result_aide = result_aide.replace(">", "")
-    
+
         # Extract the realisation years
         result_years = search_words_extract("rÉalisation", 
                         page,
@@ -1128,7 +1128,7 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
                         "y1",
                          10
                         )
-        
+
         if result_years == "" or result_years is None:
             result_years = None
         else:
@@ -1136,7 +1136,7 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
             result_years = result_years.replace(">", "")
             if result_years == "":
                 result_years = None
-        
+
         # Extract the company activity and project goal
         zone_activite = page.search_for("> ACTIVITÉ DE L’ENTREPRISE")
         if zone_activite == []:
@@ -1146,14 +1146,14 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
                 zone_activite = zone_activite[0]
         else:
             zone_activite = zone_activite[0]
-        
+
         zone_objectif = page.search_for("> OBJECTIF DU PROJET")
         if zone_objectif == []:
             zone_objectif = page.search_for("> OBJECTIFDU PROJET")[0]
         else:
             zone_objectif = zone_objectif[0]
-        
-        zone_contact_presse = page_projet.search_for("CONTACT")[0]
+
+        zone_contact_presse = pymupdf.Rect(49.05120086669922, 614.7211303710938, 80.85121154785156, 626.7510986328125)
 
         ## Company activity
         # Utilisation du début de la zone d'activité et de la fin avec Objectif
@@ -1166,7 +1166,7 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
             result_activite = page.get_textbox(rect_activite)
         else:
             result_activite = None
-        
+
         ## Project goal
         # Utilisation du début de la zone objectif et de la fin avec contact presse
         x0_proj = zone_objectif.x0
@@ -1186,8 +1186,13 @@ def _(page_projet, page_projet_1_6_2, pymupdf, re, search_words_extract):
                 "ACTIVITE_ENTREPRISE" : result_activite, 
                 "OBJECTIF_PROJET" : result_objectif
                }
-
     return (extract_inf_project_1_6,)
+
+
+@app.cell
+def _(page_projet):
+    page_projet.search_for("CONTACT")[0]
+    return
 
 
 @app.cell
@@ -1290,14 +1295,14 @@ def _(page_projet_7_10, pymupdf, search_words_extract):
             result_goal = result_blocks[1][4]
         elif len(result_blocks) > 2:
             result_activity = result_blocks[0][4]
-        
+
             result_goal = ""
             for elt in result_blocks[1:]:
                 result_goal += elt[4] + " "
         else:
             result_activity = None
             result_goal = result_blocks[0][4]
-        
+
         return {
             "LOCALISATION" : result_loc,
             "MONTANT_PROJET" : result_amount_proj,
@@ -1306,7 +1311,6 @@ def _(page_projet_7_10, pymupdf, search_words_extract):
             "ACTIVITE_ENTREPRISE" : result_activity,
             "OBJECTIF_PROJET" : result_goal
         }
-
     return (extract_inf_project_7_10,)
 
 
@@ -1370,7 +1374,7 @@ def _(pymupdf, search_words_extract):
                         "y1",
                          4
                         )
-    
+
         # Get the different zones for the paragraph extraction
         zone_activite = page.search_for("ACTIVITÉ DE L’ENTREPRISE")[0]
         zone_loc = page.search_for("|")[0]
@@ -1384,7 +1388,7 @@ def _(pymupdf, search_words_extract):
         y1_11_12 = zone_loc.y0 - 2
         rect_activite_11_12 = pymupdf.Rect(x0=x0_11_12, y0=y0_11_12, x1=x1_11_12, y1=y1_11_12)
         result_activity = page.get_textbox(rect_activite_11_12)
-    
+
         # for the project goal
         x0_11_12_2 = zone_objectif.x0
         y0_11_12_2 = zone_objectif.y1
@@ -1392,8 +1396,8 @@ def _(pymupdf, search_words_extract):
         y1_11_12_2 = zone_duree_projet.y0 - 10
         rect_objectif_11_12 = pymupdf.Rect(x0_11_12_2, y0_11_12_2, x1_11_12_2, y1_11_12_2)
         result_goal = page.get_textbox(rect_objectif_11_12)
-    
-    
+
+
         # Return the results
         return {
             "LOCALISATION" : result_loc,
@@ -1403,7 +1407,7 @@ def _(pymupdf, search_words_extract):
             "ACTIVITE_ENTREPRISE" : result_activity,
             "OBJECTIF_PROJET" : result_goal        
         }
-    
+
     return (extract_inf_project_11_12,)
 
 
@@ -1514,7 +1518,7 @@ def _(
                     page_open = doc_open[lines[3] - 2]
                 else:
                     page_open = doc_open[lines[3] - 1]
-                
+
                 result_dict = funct_used(page_open)
 
                 # if moba, then modify values
@@ -1522,14 +1526,14 @@ def _(
                     result_dict["MONTANT_PROJET"] = "1 303 134 €"
                     result_dict["MONTANT_AIDE"] = "586 410 €"
                     result_dict["REALISATION"] = "24 mois"
-                
+
                 for key in dict_donnees.keys():
                     dict_donnees[key].append(result_dict[key])
                 doc_open.close()
             else:
                 for key in dict_donnees.keys():
                     dict_donnees[key].append(None)
-        
+
 
         return dict_donnees
     return (extract_projets,)
@@ -1562,6 +1566,12 @@ def _(details_projets_2, pd, toc_contents):
 @app.cell
 def _(toc_contents_project_details):
     toc_contents_project_details
+    return
+
+
+@app.cell
+def _(doc_concours_1_6):
+    doc_concours_1_6[100].get_text()
     return
 
 

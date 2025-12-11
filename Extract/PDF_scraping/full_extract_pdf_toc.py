@@ -1,7 +1,6 @@
 ##############################-
 # Sujet : Extraction complète des données du sommaire + export CSV à nettoyer
 # Date : 30/11/2025
-# Auteur : Julien RENOULT
 #############################-
 
 import pandas as pd
