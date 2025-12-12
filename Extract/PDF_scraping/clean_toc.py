@@ -1,6 +1,5 @@
 #############################-
 # Sujet : Nettoyage des données concours sur le sommaire
-# Auteur : Julien RENOULT
 # Date : 06/12/2025
 #############################-
 

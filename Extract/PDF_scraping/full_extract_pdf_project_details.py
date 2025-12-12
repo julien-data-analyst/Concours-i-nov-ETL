@@ -40,7 +40,7 @@ def extract_projets(df):
     }
 
     for lines in df.values:
-        print(lines)
+        #print(lines)
         chemin = chemins_pdf[lines[4]-1]
         if lines[4] <= 6:
             funct_used = inov16.extract_inf_project_1_6
@@ -77,6 +77,8 @@ def extract_projets(df):
 if __name__=="__main__":
     toc_contents = pd.read_json(path_or_buf="Data/concours_toc.jsonl", lines=True,encoding="utf-8",orient="records")
     toc_project_contents = pd.DataFrame(extract_projets(toc_contents))
+    toc_project_contents = pd.concat([toc_contents, toc_project_contents], axis=1)
+
     #print(toc_project_contents)
-    toc_project_contents.to_csv("Data/ToClean/concours_projet.csv", sep=";", index=False)
+    toc_project_contents.to_csv("Data/ToClean/concours_projet_1_12.csv", sep=";", index=False)
 
