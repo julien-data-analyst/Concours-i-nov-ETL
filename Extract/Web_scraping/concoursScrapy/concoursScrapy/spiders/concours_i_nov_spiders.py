@@ -8,7 +8,7 @@ class ConcoursINovSpider(scrapy.Spider):
         
     custom_settings = {
         "FEEDS": {
-            "../../../Data/concours.jsonl": {
+            "../../../../Data/concours.jsonl": {
                 "format": "jsonlines",
                 "encoding": "utf8",
                 "overwrite": True,
@@ -70,6 +70,8 @@ class ConcoursINovSpider(scrapy.Spider):
         item = response.meta["item"]
 
         # Récupérer des informations supplémentaires
+        item["Editeurs_URL"] = [response.urljoin(elt) for elt in response.xpath('//div[contains(@class, "publication-edit__content")]//a/@href').getall()]
+        item["Editeurs"] = response.xpath('//div[contains(@class, "publication-edit__content")]//a/text()').getall()
         item["Parution"] = response.xpath('//time/text()').get()
         item["Presentation"] = ' '.join(response.xpath('//div[contains(@class, "block-field-blocknodepublicationfield-presentation")]//p/text()').getall())
         item["PDF_URL"] = response.urljoin(response.xpath('//a[@class="file-link"]/@href').get())
