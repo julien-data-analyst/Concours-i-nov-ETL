@@ -158,7 +158,7 @@ def extract_inf_project_7_10(page):
     zone_aide_acc = page.search_for("Aide accordée")[0]
 
     x0_act = zone_contact_presse.x0
-    y0_act = zone_aide_acc.y1 + 60
+    y0_act = zone_aide_acc.y1 + 5
     x1_act = page.rect.x1
     y1_act = zone_contact_presse.y0 - 2
     rect_activite = pymupdf.Rect(x0_act, y0_act, x1_act, y1_act)
@@ -167,14 +167,20 @@ def extract_inf_project_7_10(page):
 
     #print(result_blocks)
 
-    if len(result_blocks) == 2:
-        result_activity = result_blocks[0][4]
-        result_goal = result_blocks[1][4]
-    elif len(result_blocks) > 2:
-        result_activity = result_blocks[0][4]
+    if len(result_blocks) == 3:
+        result_activity = result_blocks[1][4]
+        result_goal = result_blocks[2][4]
+    elif len(result_blocks) > 3:
+
+        if len(result_blocks[1][4]) < 50:
+            ind_act = 2
+        else:
+            ind_act = 1
+
+        result_activity = result_blocks[ind_act][4]
 
         result_goal = ""
-        for elt in result_blocks[1:]:
+        for elt in result_blocks[ind_act+1:]:
             result_goal += elt[4] + " "
     else:
         result_activity = None
