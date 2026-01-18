@@ -8,12 +8,18 @@ class ConcoursINovSpider(scrapy.Spider):
         
     custom_settings = {
         "FEEDS": {
-            "../../../../Data/concours.jsonl": {
+            "Data/concours.jsonl": {
                 "format": "jsonlines",
                 "encoding": "utf8",
                 "overwrite": True,
             }
-        }
+        },
+        "DOWNLOAD_DELAY": 4,
+        "RANDOMIZE_DOWNLOAD_DELAY": True,
+
+        "CONCURRENT_REQUESTS": 2,
+        "CONCURRENT_REQUESTS_PER_DOMAIN": 1,
+        "LOG_LEVEL" : "WARNING"
     }
 
     # Appel de la page principal

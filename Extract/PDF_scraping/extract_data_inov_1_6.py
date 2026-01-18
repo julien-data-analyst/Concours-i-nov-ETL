@@ -8,7 +8,10 @@ import pymupdf
 import pandas as pd
 import re 
 import os
-from words_pdf import search_words_extract
+if __name__=="__main__":
+    from words_pdf import search_words_extract
+else:
+    from Extract.PDF_scraping.words_pdf import search_words_extract
 
 def extract_concours_inov_1_6(path_pdf="", export=False, path=""):
 

@@ -1,68 +1,65 @@
-Concours i-nov (collecte et préparation des données) :
+# Concours-I-Nov ETL :
 
-Dans le cadre de ce projet, nous avons mené la création d'un script Python de type ETL pour extraire, transformer et charger les données dans une BDD PostGreSQL.
-La problématique est que nous devons collecter ces données sur des fichiers PDF en prenant le lien ci-dessous :
-https://www.enseignementsup-recherche.gouv.fr/fr/rechercher-une-publication/collection_title/accueil-collection.i-nov-laureats-du-concours-d-innovation?page=1
+This repositories serve as a ETL to extract Data from PDF files on a website. 
+These data are based of the french i-nov competition which we can find on the [enseignementsup-recherche.gouv.fr](https://www.enseignementsup-recherche.gouv.fr/fr/rechercher-une-publication/collection_title/accueil-collection.i-nov-laureats-du-concours-d-innovation?page=1).
 
-1ère partie : téléchargement des fichiers PDF :
+To create this ETL, I used the Python language with different librairies like :
+- [pymupdf](https://pymupdf.readthedocs.io/en/latest/) : to extract data from the PDF
+- [pandas](https://pandas.pydata.org/) : to clean and prepare extracted data
+- [scrapy](https://www.scrapy.org/) : to extract data from the website
 
-Chaque block de ces palmarès permet de récupérer le lien correspondant pour accéder au fichier PDF :
-main[id = "main-content"].div[id = "block-heu-esr-theme-content"].div[class=block-extra-field-blockconfig-pagessearch-publicationsearch-page-publication].div[class="views-infinite-scroll-content-wrapper"]
+This goal project was to discover the use of pymupdf and scrapy to the data extraction. It was very interesting to use these libraries and going through the documentation.
 
-récupérer dans chacune de ces div class wrapper :
-le titre contenu dans la balise <a>
-le lien en question (à mettre début : https://www.enseignementsup-recherche.gouv.fr/)
-le numéro de la vague : div[class=publication-research-article__additional]
-la petite description : div[class=section-chapo]
+# How to use this ETL
 
-Pour récupérer ces informations dans des listes :
-titre : liste_concours.xpath('.//a/text()').getall()
-lien : liste_concours.xpath('.//a/@href').getall()
-numéro de la vague : liste_concours.xpath('.//div[@class="publication-research-article__editing"]/div/text()').getall()
-description : liste_concours.xpath('.//div[@class="section-chapo"]/text()').getall()
+In this part, i will show you how to use this ETL and what you need to install to do it.
 
-Aller dans chacun de ces liens et récupérer ces informations :
-date de parution : <time>
-récupérer la présentation : div[class="block-field-blocknodepublicationfield-presentation"]
-récupérer le lien du fichier : a[class = "file-link"]
+## Project prerequisites 
 
-Lire les fichiers PDF depuis leurs liens et récupérer :
-- les données de la page "index des entreprises lauréates" sur chaque projet avec la thématique concernée
-- Récupérer les informations précises de chacun de ces projets dans le PDF
-    - Localisation
-    - Réalisation 
-    - Montant du projet
-    - Aide accordée / Aide PIA
-    - Contact presse / Contact
-    - Logo de l'entreprise (à voir si on peut le récupérer)
-    - Nom de l'entreprise
-    - Titre du projet
-    - Description du projet / Objectif du projet
+- [Python](https://www.python.org/downloads/) (version 3.12.3)
+- [PostgreSQL](https://www.postgresql.org/)
 
-Application :
-1er script Python : collecte des données webs (Scraping Web)
-2ème script Python : collecte des données sur les PDF (projets / Scraping PDF)
-3ème script Python : Transformation et nettoyage des données (séparation / conversion type / etc)
-4ème script Python : Création du BDD et insertion des données sous PostGreSQL
+After installing the Python and cloned the project, we're gonna create a virtual environment which will be useful to install the necessary librairies.
 
-Dossier Data : données brutes / données nettoyées
-Dossier Scraping Web : le scraping web
-    package : script aidant au script principal
-    script_principal : scraping web et téléchargement des PDF
-Dossier Scraping PDF : le scraping PDF
-    package
-    script_principal
-Dossier Transformation et nettoyage : Préparation de toutes les données pour qu'elles soient possibles de les insérer
-Dossier BDD PostGreSQL : Création et insertion des données dans la BDD (Modèle Conceptuel / Relationnel)
+```
+$ python3 -m venv "envConcoursinovWebApp"
+$ source /home/.../envConcoursETL/bin/activate
+$ pip install -r requirements. txt
+```
 
+After that, you need to create a **.env** containing these different environment variables :
 
-Librairies Python pour ce projet :
-- uv pour le gestionnaire de librairies
-- Scrapy pour le web scraping (découvrir)
-- PyMuPDF pour PDF scraping (découvrir)
-- Pandas pour du transformation et nettoyage de données
-- psycopg pour la BDD PostgreSQL (découvrir)
+```
+# By using this
+DBNAME=""
+DBUSERNAME=""
+DBPASSWORD=""
 
-Retour :
-- concours_i_nov : Dataframe contenant les informations sur les concours en générales (Web)
-- projets_laureates : DataFrame contenant les différents projets sélectionnées de tous les concours (PDF)
+# Or by using this
+DBEXTERNALURL = ""
+```
+
+**Important note : don't forget to create the PostgreSQL Database to use this ETL, this cannot work without it.**
+
+## To run the ETL
+
+It's very simple, all you need to do is to make this command and the ETL will take care of everything.
+
+```
+$ python main.py
+```
+
+And now the ETL will be running, it will take sometimes to extract from the website and the PDFs so don't be surprised.
+
+# How it was built
+
+Like you can see, four principal folder was created :
+- Data : which contain the extracted and cleaned data
+- Extract : contains the Scrapy script and the pymupdf script to extract the Data
+- Transform : transform and clean the extracted data 
+- Load : load the data into a PostGreSQL
+
+This structure permits to easily concentrate on one task at the time, the longuest of course was to extract the PDF data because the PDF layout changed every 3 or 4 contests. The transform was quite easy after I determined what kind of data i needed.
+
+Of course, this project isn't perfect and I'm planning to make it better.
+For the moment, I want to explore the extracted data with a website i'm going to create. So, if you want to checkout this app project, go to the following [link](https://github.com/julien-data-analyst/concours-inov-web-app).

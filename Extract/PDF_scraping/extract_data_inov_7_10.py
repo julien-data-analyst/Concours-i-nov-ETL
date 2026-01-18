@@ -3,11 +3,13 @@
 # Date : 29/11/2025 - 11/12/2025
 #############################-
 import pymupdf
-import pymupdf
 import pandas as pd
 import re 
 import os
-from words_pdf import search_words_extract
+if __name__=="__main__":
+    from words_pdf import search_words_extract
+else:
+    from Extract.PDF_scraping.words_pdf import search_words_extract
 
 def extract_concours_inov_7_10(path_pdf="", export=False, path=""):
 

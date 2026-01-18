@@ -4,11 +4,15 @@
 #############################-
 
 # Chargement des librairies
+if __name__=="__main__":
+    import extract_data_inov_1_6 as inov16
+    import extract_data_inov_7_10 as inov710
+    import extract_data_inov_11_12 as inov1112
+else:
+    import Extract.PDF_scraping.extract_data_inov_1_6 as inov16
+    import Extract.PDF_scraping.extract_data_inov_7_10 as inov710
+    import Extract.PDF_scraping.extract_data_inov_11_12 as inov1112
 import pandas as pd
-import extract_data_inov_1_6 as inov16
-import extract_data_inov_7_10 as inov710
-import extract_data_inov_11_12 as inov1112
-import os
 import pymupdf
 
 # Extraire les informations sur tous les projets
