@@ -315,7 +315,8 @@ if __name__=="__main__":
     if os.getenv("DBEXTERNALURL") != "":
         conn, cur = bdd_conn.connexion_bdd(database_url=os.getenv("DBEXTERNALURL"))
     else:
-        conn, cur = bdd_conn.connexion_bdd(os.getenv("DBNAME"), os.getenv("DBUSERNAME"), os.getenv("DBPASSWORD"))
+        conn, cur = bdd_conn.connexion_bdd(os.getenv("DBNAME"), os.getenv("DBUSERNAME"), os.getenv("DBPASSWORD"), 
+                                           os.getenv("DBHOST"), port=os.getenv("DBPORT"))
     
     insert_bdd(cur, conn)
 
