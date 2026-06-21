@@ -42,7 +42,7 @@ def find_pages_with_text(pdf_path, search_text):
     return pages_with_text
 
 # Aller chercher les fihciers PDF dans le répertoire spécifié
-def get_pdf_files(directory):
+def get_pdf_files(directory, extension=".pdf"):
     """
     Récupère tous les fichiers PDF dans un répertoire donné.
 
@@ -57,7 +57,7 @@ def get_pdf_files(directory):
     for root, dirs, files in os.walk(directory):
         #print(files)
         for file in files:
-            if file.lower().endswith(".pdf"):
+            if file.lower().endswith(extension):
                 pdf_files.append(os.path.join(root, file))
     return pdf_files
 
@@ -89,7 +89,7 @@ def find_summary_pages(pdf_path, list_strings=["Index des entreprises lauréates
     
     return summary_pages
 
-def convert_pdf_page_to_image(pdf_path, page_number, output_image_path):
+def convert_pdf_page_to_image(pdf_path, page_number, output_image_path, dpi=300):
     """
     Convertit une page spécifique d'un fichier PDF en image.
 
@@ -101,7 +101,7 @@ def convert_pdf_page_to_image(pdf_path, page_number, output_image_path):
     with fitz.open(pdf_path) as pdf:
         if 1 <= page_number <= len(pdf):
             page = pdf[page_number - 1]  # Ajuster pour l'indexation 0
-            pix = page.get_pixmap(dpi=300)  # Résolution de 300 DPI
+            pix = page.get_pixmap(dpi=dpi)  # Résolution de 300 DPI
             pix.save(output_image_path)
             logging.info(f"Page {page_number} du PDF convertie en image : {output_image_path}")
 
@@ -110,7 +110,7 @@ def convert_pdf_page_to_image(pdf_path, page_number, output_image_path):
         else:
             logging.error(f"Numéro de page invalide : {page_number}. Le PDF contient {len(pdf)} pages.")
 
-def convert_pdf_pages_to_images(pdf_path, page_numbers, output_dir):
+def convert_pdf_pages_to_images(pdf_path, page_numbers, output_dir, dpi=300):
     """
     Convertit plusieurs pages spécifiques d'un fichier PDF en images. 
     Il les sauvegardes en supprimant ce qu'il existait déjà dans le dossier de sortie.
@@ -138,7 +138,7 @@ def convert_pdf_pages_to_images(pdf_path, page_numbers, output_dir):
         for page_number in page_numbers:
             if 1 <= page_number <= len(pdf):
                 page = pdf[page_number - 1]  # Ajuster pour l'indexation 0
-                pix = page.get_pixmap(dpi=300)  # Résolution de 300 DPI
+                pix = page.get_pixmap(dpi=dpi)  # Résolution de 300 DPI
                 output_image_path = os.path.join(output_dir, f"page_{page_number}.png")
                 pix.save(output_image_path)
                 images.append(output_image_path)
@@ -147,3 +147,35 @@ def convert_pdf_pages_to_images(pdf_path, page_numbers, output_dir):
                 logging.error(f"\nNuméro de page invalide : {page_number}. Le PDF contient {len(pdf)} pages.")
 
     return images
+
+def filter_pages_without_text(pdf_path, page_numbers, search_text):
+    """
+    Retourne les pages de page_numbers qui ne contiennent PAS search_text.
+
+    Args:
+        pdf_path (str): Chemin du PDF.
+        page_numbers (list[int]): Liste des pages à vérifier (1-indexées).
+        search_text (str): Texte à rechercher.
+
+    Returns:
+        list[int]: Liste des pages ne contenant pas le texte.
+    """
+    filtered_pages = []
+
+    with fitz.open(pdf_path) as pdf:
+        normalized_search = normalize(search_text)
+
+        for page_number in page_numbers:
+            if 1 <= page_number <= len(pdf):
+                page = pdf[page_number - 1]
+                text = normalize(page.get_text())
+
+                if normalized_search not in text:
+                    filtered_pages.append(page_number)
+            else:
+                logging.warning(
+                    f"Numéro de page invalide : {page_number}. "
+                    f"Le PDF contient {len(pdf)} pages."
+                )
+
+    return filtered_pages
