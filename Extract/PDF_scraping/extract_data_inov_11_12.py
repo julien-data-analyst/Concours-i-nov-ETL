@@ -26,7 +26,9 @@ def extract_concours_inov_11_12(path_pdf="", export=False, path=""):
     # Documents PDF à parcourir
     docs = [
             "i-nov---palmar-s-vague-11-37360.pdf",
-            "i-nov---palmar-s-vague-12-37363.pdf"
+            "i-nov---palmar-s-vague-12-37363.pdf",
+            "i-nov--palmar-s-vague-13-19515.pdf",
+            "i-nov--palmar-s-vague-14-37363.pdf"
             ]
 
     cols_dataframes = ["ENTREPRISE", "PROJET", "THEMATIQUE", "PAGE", "VAGUE"]
@@ -68,6 +70,23 @@ def extract_concours_inov_11_12(path_pdf="", export=False, path=""):
                         projet = "EPIWISE"
                         num_page = 38
                         entreprise = "GEOMATYS"
+                    # Pour les nouveaux concours 2026 (13 et 14)
+                    elif "ANIMAJ" in elt[0]:
+                        projet = "ANIMAJ"
+                        num_page = 25
+                        entreprise = "ANIMAJ"
+                    elif "LUDOCARE" in elt[0]:
+                        projet = "JOE"
+                        num_page = 40
+                        entreprise = "LUDOCARE"
+                    elif "MORFO" in elt[0]:
+                        projet = "SEED STATION"
+                        num_page = 24
+                        entreprise = "MORFO"
+                    elif "PRIVACY CHAMBERS" in elt[0]:
+                        projet = "PROJET ATLASS"
+                        num_page = 36
+                        entreprise = "PRIVACY CHAMBERS"
                     else:
                         #print(elt)
                         projet = re.match(pattern_ext_proj, elt[1]).group(1) # Récupérer le nom du projet

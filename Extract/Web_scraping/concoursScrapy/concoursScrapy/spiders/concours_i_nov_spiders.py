@@ -19,7 +19,8 @@ class ConcoursINovSpider(scrapy.Spider):
 
         "CONCURRENT_REQUESTS": 2,
         "CONCURRENT_REQUESTS_PER_DOMAIN": 1,
-        "LOG_LEVEL" : "WARNING"
+        "LOG_LEVEL" : "WARNING",
+        "ROBOTSTXT_OBEY": False,
     }
 
     # Appel de la page principal

@@ -23,11 +23,11 @@ def extract_toc():
     dossier_pdf = "Data/PDF_files"
     data_nettoyer = "Data/ToClean/concours_inov_1_12_toc.csv"
 
-    # 1ère partie : Téléchargement de tous les fichiers PDF
-    concours = pd.read_json("Data/concours.jsonl", lines=True)
+    # 1ère partie : Téléchargement de tous les fichiers PDF (INUTILE MAINTENANT)
+    #concours = pd.read_json("Data/concours.jsonl", lines=True)
 
-    for pdf_url in concours["PDF_URL"]:
-        dpf.download_pdf_web(pdf_url, "Data/PDF_files")
+    #for pdf_url in concours["PDF_URL"]:
+    #    dpf.download_pdf_web(pdf_url, "Data/PDF_files")
 
     # 2ème partie : Extraction du sommaire pour tous les PDF 
     dataset_inov_1_6 = inov16.extract_concours_inov_1_6(dossier_pdf)

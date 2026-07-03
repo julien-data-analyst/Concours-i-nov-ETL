@@ -30,7 +30,9 @@ def extract_projets(df):
     "Data/PDF_files/i-nov---palmar-s-vague-9-28604.pdf",
     "Data/PDF_files/i-nov---palmar-s-vague-10-28601.pdf",
     "Data/PDF_files/i-nov---palmar-s-vague-11-37360.pdf",
-    "Data/PDF_files/i-nov---palmar-s-vague-12-37363.pdf"
+    "Data/PDF_files/i-nov---palmar-s-vague-12-37363.pdf",
+    "Data/PDF_files/i-nov--palmar-s-vague-13-19515.pdf",
+    "Data/PDF_files/i-nov--palmar-s-vague-14-37363.pdf"
     ]
 
     # for each lines, track the data we can have
